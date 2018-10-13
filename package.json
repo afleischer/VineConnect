@@ -1,0 +1,28 @@
+{
+  "name": "vineconnect",
+  "version": "1.0.0",
+  "description": "Multi-Page App for connecting boutique vintners with temporary assistance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afleischer/VineConnect.git"
+  },
+  "keywords": [
+    "viticulture",
+    "help",
+    "working",
+    "job_board"
+  ],
+  "author": "afleischer",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/afleischer/VineConnect/issues"
+  },
+  "homepage": "https://github.com/afleischer/VineConnect#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
