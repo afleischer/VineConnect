@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/afleischer/VineConnect#readme",
   "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "jest": "^23.6.0"
   }
 }
