@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
 
 import NavMenu from './components/NavMenu'
 import HomePage from './components/HomePage'
@@ -29,12 +29,22 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = () =>{
+const mapStateToProps = (state, ownProps) =>{
+  //ex:
+    /* return {
+      PagesSnapshot : state.state.PageSnapshot
+
+    } 
+    */ 
+}
+
+const mapDispatchToProps = dispatch => {
+  //ex:
+    //calledFunction: (parameters) => dispatch(functionName(parameters))
+      //where functionName is imported as an action from an actions file
+
+
 
 }
 
-const mapDispatchToProps = () => {
-
-}
-
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

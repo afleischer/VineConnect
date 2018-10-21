@@ -40,11 +40,11 @@ class FindWork extends React.Component{
 
 	render(){
 		return(
-			<h1></h1>
-			<JobMap />
-			<JobList api_key = {this.props.api_key}/>
-
-
+			<div>
+				<h1></h1>
+				<JobMap />
+				<JobList api_key = {this.props.api_key} />
+			</div>
 		);
 	}
 }
