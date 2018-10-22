@@ -1,0 +1,24 @@
+state : {
+    //Find Work
+    userLocation : {
+	lat : 33,
+	lng : 184
+    }
+	//if not using redux, would be stored at "JobMap" level
+    jobs : {
+	    <uId> : {
+		job_name:
+		job_description:
+		job_poster:
+		job_start_date:
+		job_end_date:
+		location:
+	    }
+	...
+    },
+
+    
+	
+	
+	
+	

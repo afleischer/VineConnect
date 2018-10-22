@@ -22,7 +22,7 @@ class FindWork extends React.Component{
 	}
 	*/
 
-
+/*
 	loadMap(){
 		//initiate the Google Maps API
 
@@ -36,7 +36,7 @@ class FindWork extends React.Component{
 
     return mapToLoad;
 	}
-
+*/
 
 	render(){
 		return(

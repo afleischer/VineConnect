@@ -23,7 +23,7 @@ const JobList = (props) => {
 
 	function JobListItems() {
 		//for each Job in Firebase, return: 
-		returnArray = []
+		var returnArray = []
 		//for each job in jobs
 			//push following to the returnArray as a JSX entry:
 				//<h2 className = "job_name"> Job: </h2>

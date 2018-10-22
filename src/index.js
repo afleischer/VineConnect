@@ -4,11 +4,11 @@ import './styles/index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import firebase from '../firebase_config.js';
+import firebase from './firebase_config.js';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { store } from '../store/index.js';
+import { store } from './store/index.js';
 
 
 ReactDOM.render(

@@ -1,0 +1,8 @@
+state : {
+    //Find Work
+    userLocation : {
+	lat : 33,
+	lng : 184
+    jobs : {
+	    <uId> : {
+		

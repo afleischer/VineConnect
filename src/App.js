@@ -9,6 +9,8 @@ import PostWork from './components/PostWork'
 import ManageWork from './components/ManageWork'
 import Footer from './components/Footer'
 
+import {connect} from 'react-redux'
+
 class App extends Component {
   render() {
     return (
