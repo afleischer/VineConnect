@@ -11,20 +11,29 @@ import Footer from './components/Footer'
 
 import {connect} from 'react-redux'
 
-class App extends Component {
+/*
+To add back in as created:
+
+        <NavMenu /> 
+
+        <HomePage />
+        <PostWork />
+
+        <Footer /> 
+
+
+*/
+
+class App extends React.Component {
   render() {
     return (
       <div className="App">
 
-        <NavMenu /> 
         
-        <HomePage />
+
 
         <FindWork />
 
-        <PostWork />
-
-        <Footer /> 
 
       </div>
     );
@@ -38,6 +47,7 @@ const mapStateToProps = (state, ownProps) =>{
 
     } 
     */ 
+    return state;
 }
 
 const mapDispatchToProps = dispatch => {
@@ -45,7 +55,9 @@ const mapDispatchToProps = dispatch => {
     //calledFunction: (parameters) => dispatch(functionName(parameters))
       //where functionName is imported as an action from an actions file
 
+      return {
 
+      };
 
 }
 

@@ -40,9 +40,11 @@ const JobList = (props) => {
 
 
 
-
+	//Will return JobListItems in a bit
 	return(
-		{JobListItems}
+		{
+
+		}
 	)
 
 }

@@ -9,7 +9,7 @@ class FindWork extends React.Component{
 		super(props);
 
 
-	this.loadMap = this.loadMap.bind(this);
+	//this.loadMap = this.loadMap.bind(this);
 	}
 
 	/*
@@ -37,13 +37,15 @@ class FindWork extends React.Component{
     return mapToLoad;
 	}
 */
-
+/*
+TO ADD: 
+	<JobList api_key = {this.props.api_key} />
+*/
 	render(){
 		return(
 			<div>
 				<h1></h1>
 				<JobMap />
-				<JobList api_key = {this.props.api_key} />
 			</div>
 		);
 	}
