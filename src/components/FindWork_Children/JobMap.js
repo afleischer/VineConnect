@@ -13,7 +13,7 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 class JobMap extends React.Component {
 	constructor(props){
-		super(props)
+		super(props);
 
 		this.MapRef = React.createRef();
 	}
@@ -34,12 +34,6 @@ class JobMap extends React.Component {
 		}
 		//Initial GeoLocation
 		
-		const geoData = (geo) => {return {
-			lat: geo.coords.latitude,
-			lng: geo.coords.longitude
-		}}
-		const startPos = navigator.geolocation.getCurrentPosition(geoData);
-
 
 		if(!this.props.loaded){
 			return <div>Map Loading...</div>
@@ -49,8 +43,18 @@ class JobMap extends React.Component {
 			<div style={style}>
 				<Map 
 					ref = {this.MapRef}
-					google={this.props.google} zoom = {14} 
+					google={this.props.google} 
 					style = {style}
+					center = {{
+						lat: this.props.userLocation.lat,
+						lng: this.props.userLocation.lng					
+					}}
+					initialCenter = {{
+						lat: this.props.userLocation.lat,
+						lng: this.props.userLocation.lng
+					}}
+					zoom = {12} 
+					
 					/>
 
 			</div>
