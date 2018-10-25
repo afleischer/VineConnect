@@ -1,13 +1,21 @@
 import React from 'react';
 
 //import GoogleApi from '../GoogleApi.js';
-import GoogleApiComponent from './GoogleApiComponent.js'
 
-import Map from './Map.js'
+//import scriptCache from './scriptCache.js'
+//import GoogleApiComponent from './GoogleApiComponent.js'
+
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+
+//import Map from './Map.js'
+
+
 
 class JobMap extends React.Component {
 	constructor(props){
-		super(props)
+		super(props);
+
+		this.MapRef = React.createRef();
 	}
 	//var api_key = this.props.api_key;
 	//var gMapsSrc = "https://maps.googleapis.com/maps/api/js?key="+{api_key}+"&callback=initMap";
@@ -16,12 +24,16 @@ class JobMap extends React.Component {
 		//google maps script
 		//
 
+
+
 	render(){
 
 		const style = {
-			width: '30vw',
-			height: '30vh'
+			width: '70vw',
+			height: '70vh'
 		}
+		//Initial GeoLocation
+		
 
 		if(!this.props.loaded){
 			return <div>Map Loading...</div>
@@ -29,7 +41,22 @@ class JobMap extends React.Component {
 
 		return(
 			<div style={style}>
-				<Map google={this.props.google} />
+				<Map 
+					ref = {this.MapRef}
+					google={this.props.google} 
+					style = {style}
+					center = {{
+						lat: this.props.userLocation.lat,
+						lng: this.props.userLocation.lng					
+					}}
+					initialCenter = {{
+						lat: this.props.userLocation.lat,
+						lng: this.props.userLocation.lng
+					}}
+					zoom = {12} 
+					
+					/>
+
 			</div>
 		)
 	}
@@ -46,4 +73,4 @@ Component to handle:
 
 //GoogleApiComponent passes "loaded" prop that is set to true when 
 //the Google API is loaded
-export default  GoogleApiComponent({apiKey: "AIzaSyAErtRuaQIRoW5HIO61S8rks4YuI0gZ4zA"})(JobMap)
+export default  GoogleApiWrapper({apiKey: "AIzaSyDFDbA-j3YPpdACF2hWBzDC4l9abeP-Z1k"})(JobMap)

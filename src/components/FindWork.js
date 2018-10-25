@@ -8,42 +8,76 @@ class FindWork extends React.Component{
 	constructor(props){
 		super(props);
 
+		/*==========
+		Get user position
+		==========*/
 
-	this.loadMap = this.loadMap.bind(this);
+
 	}
 
-	/*
 	state = {
-	userLocation : {
-		lat : ,
-		lng : 
+		userLocation: {
+			lat: 37.7749,
+			lng: 122.4194
+		}
 	}
 
+	componentWillMount(){
+		navigator.geolocation.getCurrentPosition(
+			position => {
+				this.setState({
+					userLocation: {
+						lat: position.coords.latitude,
+						lng: position.coords.longitude
+					}
+				});
+			},
+			error => console.log(error)
+		);
+
 	}
-	*/
 
-/*
-	loadMap(){
-		//initiate the Google Maps API
 
-	var map;
-      var mapToLoad = function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},  //Will be the state of the userLocation
-          zoom: 8
-        });
-      }
+	componentDidMount(){
 
-    return mapToLoad;
+		/*==============
+		Prompt the user to enter their geolocation data. 
+		If location chosen, then update the maps to center on it.
+		===============*/
+
+		/*
+
+		var location = {};
+
+		function success(pos){
+			var position = pos.coords;
+			location = position;
+			}
+
+		function error(err){
+		  console.warn(`ERROR(${err.code}): ${err.message}`);
+		}
+
+		if(navigator.geolocation){
+			navigator.geolocation.getCurrentPosition(success, error)	
+		}
+
+		if(location != {} && location != undefined && location != null){
+			this.setState({ 
+				userLocation: {
+					lat: location.lat,
+					lng: location.lng
+				}
+			});	
+		}
+		*/
 	}
-*/
 
 	render(){
 		return(
 			<div>
 				<h1></h1>
-				<JobMap />
-				<JobList api_key = {this.props.api_key} />
+				<JobMap userLocation = {this.state.userLocation} />
 			</div>
 		);
 	}
