@@ -3,6 +3,11 @@ import React from 'react';
 import JobMap from './FindWork_Children/JobMap'
 import JobList from './FindWork_Children/JobList'
 
+import styled from 'styled-components';
+import classNames from 'classnames/bind';
+
+
+import '../styles/index.css';
 
 class FindWork extends React.Component{
 	constructor(props){
@@ -74,9 +79,10 @@ class FindWork extends React.Component{
 	}
 
 	render(){
+
 		return(
 			<div>
-				<h1></h1>
+				<h1 className='header_text'>FindWork</h1>
 				<JobMap userLocation = {this.state.userLocation} />
 			</div>
 		);

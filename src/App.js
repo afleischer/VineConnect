@@ -29,8 +29,7 @@ class App extends React.Component {
     return (
       <div className="App">
 
-        
-
+        <NavMenu />
 
         <FindWork />
 
