@@ -44,3 +44,7 @@ export const MapStyle = styled.div`
 	}
 `
 
+export const FullWidth = styled.div`
+	width: '100vw'
+	height: '500px'
+`
