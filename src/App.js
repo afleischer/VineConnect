@@ -8,8 +8,15 @@ import FindWork from './components/FindWork'
 import PostWork from './components/PostWork'
 import ManageWork from './components/ManageWork'
 import Footer from './components/Footer'
+import Main from './main'
 
 import {connect} from 'react-redux'
+
+import { NavLink, Switch, Route } from 'react-router-dom';
+
+import {NavStyler, NavOption, NavOptionText, LogoText} from './styles/NavStyler'
+
+
 
 /*
 To add back in as created:
@@ -29,9 +36,9 @@ class App extends React.Component {
     return (
       <div className="App">
 
-        <NavMenu />
-
-        <FindWork />
+        <NavMenu/>
+        <Main/>
+        
 
 
       </div>
@@ -60,4 +67,4 @@ const mapDispatchToProps = dispatch => {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App

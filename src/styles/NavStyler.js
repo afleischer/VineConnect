@@ -1,3 +1,8 @@
+/**
+ * Styling to be injected for styled components
+ */
+
+
 import styled from 'styled-components';
 
 export const NavStyler = styled.div`
@@ -28,3 +33,14 @@ export const LogoText = styled.h1`
 	color: white;
 
 `;
+
+export const MapStyle = styled.div`
+	width: '70vw',
+	height: '70vh'
+
+
+	@media screen and (max-width < 700px){
+		width: '100vw'
+	}
+`
+

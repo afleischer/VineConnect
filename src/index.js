@@ -6,15 +6,14 @@ import * as serviceWorker from './serviceWorker';
 
 import firebase from './firebase_config.js';
 
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import { store } from './store/index.js';
+
+import { BrowserRouter } from 'react-router-dom';
 
 
 ReactDOM.render(
-	<Provider store = {store}>
+		<BrowserRouter>
 		<App />
-	</Provider>
+		</BrowserRouter>
 	, document.getElementById('root')
 );
 

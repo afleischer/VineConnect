@@ -1,15 +1,8 @@
 import React from 'react';
 
-//import GoogleApi from '../GoogleApi.js';
-
-//import scriptCache from './scriptCache.js'
-//import GoogleApiComponent from './GoogleApiComponent.js'
-
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
-//import Map from './Map.js'
-
-
+import {MapStyle} from '../../styles/NavStyler'
 
 class JobMap extends React.Component {
 	constructor(props){
@@ -31,6 +24,8 @@ class JobMap extends React.Component {
 		const style = {
 			width: '70vw',
 			height: '70vh'
+
+
 		}
 		//Initial GeoLocation
 		
