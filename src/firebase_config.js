@@ -1,6 +1,9 @@
 import firebase from 'firebase'
 import firebaseui from 'firebaseui'
 
+import '@firebase/firestore'
+
+
 var config = {
     apiKey: "AIzaSyDkazO1kipHFTiG-ydt4o0zXtHWYAj4jxw",
     authDomain: "vineconnect-c67e0.firebaseapp.com",
@@ -10,5 +13,11 @@ var config = {
     messagingSenderId: "1047786899543"
   };
   firebase.initializeApp(config);
+
+  export var db = firebase.firestore();
+  
+  db.settings({
+    timestampsInSnapshots: true
+  });
 
 export default firebase;

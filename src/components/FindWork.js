@@ -25,6 +25,11 @@ class FindWork extends React.Component{
 			lat: 37.7749,
 			lng: 122.4194
 		}
+		//All the jobs that are available within a given area
+	}
+
+	fetchJobs(){
+
 	}
 
 	componentWillMount(){
@@ -45,37 +50,6 @@ class FindWork extends React.Component{
 
 	componentDidMount(){
 
-		/*==============
-		Prompt the user to enter their geolocation data. 
-		If location chosen, then update the maps to center on it.
-		===============*/
-
-		/*
-
-		var location = {};
-
-		function success(pos){
-			var position = pos.coords;
-			location = position;
-			}
-
-		function error(err){
-		  console.warn(`ERROR(${err.code}): ${err.message}`);
-		}
-
-		if(navigator.geolocation){
-			navigator.geolocation.getCurrentPosition(success, error)	
-		}
-
-		if(location != {} && location != undefined && location != null){
-			this.setState({ 
-				userLocation: {
-					lat: location.lat,
-					lng: location.lng
-				}
-			});	
-		}
-		*/
 	}
 
 	render(){
@@ -84,6 +58,7 @@ class FindWork extends React.Component{
 			<div>
 				<h1 className='header_text'>FindWork</h1>
 				<JobMap userLocation = {this.state.userLocation} />
+				<JobList />
 			</div>
 		);
 	}

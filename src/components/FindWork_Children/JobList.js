@@ -2,9 +2,39 @@ import React from 'react';
 
 import '../../styles/joblist.css';
 
-const JobList = (props) => {
+import styled from 'styled-components';
+
+//Firebase imports
+import {db} from '../../firebase_config'
+
+class JobList extends React.Component{
+	constructor(props){
+		super(props);
+
+		this.populateList = this.populateList.bind(this);
+	
+		this.JobsRef = db.collection('jobs');
+
+		db.collection("jobs").get().then((querySnapshot) => {
+			var jobsArr = [];
+			querySnapshot.forEach(function(doc) {
+				// doc.data() is never undefined for query doc snapshots
+				jobsArr.push(doc.data())
+				console.log( doc.data());
+				console.log("jobsArr is:"+jobsArr)
+			});		
+
+			this.setState({
+				displayedJobs : jobsArr
+			})
+		});
+
+
+	}
+	
 	//Props: Jobs (which contain )
 	/*
+	Show all jobs available
 	jobs : [
 		<uID> : {
 			job_name:
@@ -18,10 +48,32 @@ const JobList = (props) => {
 
 	]
 
+	//Get the dimensions of the 
 	*/
+	populateList(){
+		//for each jobList item from Firebase
+		var jobs = this.state.displayedJobs;
+
+		var returnArray = []
+		//populate a list of jobs
+		for (let job of jobs){
+			returnArray.push(<div>
+				<h1>{job.name}</h1>
+				<h2>Posted by: {job.poster} </h2>
+				<p>{job.description}</p>
+				
+			</div>)
+		}
+
+		return(
+			<div>
+				{returnArray}
+			</div>
+		)
+	}
 	//for each entry within the database
 
-	function JobListItems() {
+	 JobListItems() {
 		//for each Job in Firebase, return: 
 		var returnArray = []
 		//for each job in jobs
@@ -39,13 +91,26 @@ const JobList = (props) => {
 	}
 
 
+	render(){
 
+		/**
+		 * Styled components
+		 */
+
+		const List = styled.div`
+			height: 70vh;
+			background-color: grey;
+		`
+
+
+		return(
+			<List> 
+				{this.populateList}
+			</List>
+		)
+	}
 	//Will return JobListItems in a bit
-	return(
-		{
-
-		}
-	)
+	
 
 }
 
