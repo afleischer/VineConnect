@@ -32,6 +32,9 @@ class JobList extends React.Component{
 
 	}
 	
+	state ={
+		displayedJobs : null
+	}
 	//Props: Jobs (which contain )
 	/*
 	Show all jobs available
@@ -56,14 +59,19 @@ class JobList extends React.Component{
 
 		var returnArray = []
 		//populate a list of jobs
-		for (let job of jobs){
-			returnArray.push(<div>
-				<h1>{job.name}</h1>
-				<h2>Posted by: {job.poster} </h2>
-				<p>{job.description}</p>
-				
-			</div>)
+		if (this.state.displayedJobs !== null){
+			for (let job of jobs){
+				returnArray.push(<div>
+					<h1>Job: {job.name}</h1>
+					<h3>Posted by: {job.poster} </h3>
+					<h3>Start date: {job.job_start}</h3>
+					
+					<p>{job.description}</p>
+					
+				</div>)
+			}
 		}
+
 
 		return(
 			<div>
@@ -105,7 +113,7 @@ class JobList extends React.Component{
 
 		return(
 			<List> 
-				{this.populateList}
+				{this.populateList()}
 			</List>
 		)
 	}
