@@ -21,7 +21,7 @@ export const NavOption = styled.div`
 
 
 export const NavOptionText = styled.h2`
-	font-family: Nobile;
+	font-family: Arial;
 	color: white;
 
 `;

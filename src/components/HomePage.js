@@ -7,7 +7,6 @@ import classNames from 'classnames/bind';
 
 class HomePage extends React.Component{
 
-
     render(){
         var bg_img = '../img/grapes_first.jpg'
         const FullWidth = styled.div`

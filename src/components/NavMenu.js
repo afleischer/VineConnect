@@ -7,31 +7,54 @@ import { NavLink} from 'react-router-dom';
 import Hamburger from './Hamburger'
 
 
-const NavMenu = () => {
+class NavMenu extends React.Component{
+	constructor(props){
+		super(props)
 
-	const styles= {
-		color:"white",
-		"text-decoration": "none"
+		this.toggleBurger = this.toggleBurger.bind(this)
 	}
 
-	return (
 
-	<NavStyler>
-		<NavOption>
-			<NavOptionText>
-				<LogoText><NavLink style={styles} to='/'>VineConnect</NavLink></LogoText>
-			</NavOptionText>
-		</NavOption>
+	state = {
+		hamburger_open : false
+	}
 
-		<NavOption>
-			<NavOptionText><NavLink style={styles} to='/find_work'>Find Work</NavLink></NavOptionText>
-		</NavOption>
-		<NavOption>
-			<NavOptionText><NavLink style={styles} to='/post_work'>Post Work</NavLink></NavOptionText>
-		</NavOption>
-		<Hamburger/>
-	</NavStyler>
-		)
+	toggleBurger(){
+		this.setState(prevState => ({
+			hamburger_open: !prevState.hamburger_open
+		  }));
+
+		  console.log("Recognized!");
+	}
+
+
+	render(){
+
+		const styles= {
+			color:"white",
+			"text-decoration": "none"
+		}
+	
+		return (
+
+			<NavStyler>
+				<NavOption>
+					<NavOptionText>
+						<LogoText><NavLink style={styles} to='/'>VineConnect</NavLink></LogoText>
+					</NavOptionText>
+				</NavOption>
+		
+				<NavOption>
+					<NavOptionText><NavLink style={styles} to='/find_work'>Find Work</NavLink></NavOptionText>
+				</NavOption>
+				<NavOption>
+					<NavOptionText><NavLink style={styles} to='/post_work'>Post Work</NavLink></NavOptionText>
+				</NavOption>
+				<Hamburger onClick = {this.toggleBurger} OpenClosed = {this.state.hamburger_open}/>
+			</NavStyler>
+				)
+	}
+
 }
 
 export default NavMenu;

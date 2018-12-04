@@ -35,12 +35,6 @@ class Hamburger extends React.Component{
     constructor(props){
         super(props);
 
-
-    this.toggleOpen = this.toggleOpen.bind(this);
-    }
-
-    state = {
-        open: false
     }
 
     //Will either be opened or closed 
@@ -72,7 +66,7 @@ class Hamburger extends React.Component{
     right:0;
     z-index: 5;
     opacity: 0.8;
-    display: ${props => props.Open ? "block" : "none"};
+    display: ${props => props.OpenClosed ? "block" : "none"};
 
     `     
 
@@ -99,7 +93,7 @@ class Hamburger extends React.Component{
         return(
             <div>
                 <HamburgerSelector onClick={this.toggleOpen}  />
-                    <Menu Open={this.state.open}> 
+                    <Menu Open={this.state.OpenClosed}> 
                         <MenuItemText><NavLink style={textStyle} to='/profile'>Your Profile</NavLink></MenuItemText>
                         <MenuItemText><NavLink style={textStyle} to='/settings'>Settings</NavLink></MenuItemText>
                         <MenuItemText><NavLink style={textStyle} to='/login'>Sign In or Sign Up</NavLink></MenuItemText>
