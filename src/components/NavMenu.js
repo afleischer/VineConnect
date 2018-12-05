@@ -28,6 +28,7 @@ class NavMenu extends React.Component{
 	}
 
 
+
 	render(){
 
 		const styles= {
@@ -50,7 +51,7 @@ class NavMenu extends React.Component{
 				<NavOption>
 					<NavOptionText><NavLink style={styles} to='/post_work'>Post Work</NavLink></NavOptionText>
 				</NavOption>
-				<Hamburger onClick = {this.toggleBurger} OpenClosed = {this.state.hamburger_open}/>
+				<Hamburger onClick={this.toggleBurger} ToggleBurger = {this.toggleBurger} BurgerOpened = {this.state.hamburger_open}/>
 			</NavStyler>
 				)
 	}
