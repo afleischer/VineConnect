@@ -5,7 +5,8 @@ import styled, { css } from 'styled-components'
 import { NavLink, Switch, Route } from 'react-router-dom';
 
 
-const HamburgerSelector = () => {
+const HamburgerSelector = (props) => {
+
 
 
     const TopStyle = {
@@ -35,9 +36,40 @@ class Hamburger extends React.Component{
     constructor(props){
         super(props);
 
+        console.log("Hamburger's props are"+Object.keys(props));
+
+        this.ToggleBurger = this.ToggleBurger.bind(this);
     }
 
+    state= {
+        Opened : false
+    }
+
+	ToggleBurger(){
+
+        /* 
+		this.setState(prevState => ({
+			Opened: !prevState.opened
+		  }));
+        */
+        var openedState = this.state.Opened;
+
+        if(openedState === false){
+            this.setState({
+                Opened: true
+            })
+        }
+        else if (openedState === true){
+            this.setState({
+                Opened: false
+            })
+        }    
+        
+		  console.log("Recognized!");
+	}
+
     //Will either be opened or closed 
+
 
 
     render(){  
@@ -46,6 +78,7 @@ class Hamburger extends React.Component{
          */
 
         const Menu = styled.div`
+        top: 5vh
         background-color: #0e0e0e;
         height: 100vh;
         width:300px;
@@ -53,7 +86,7 @@ class Hamburger extends React.Component{
         right:0;
         z-index: 5;
         opacity: 0.8;
-        display: ${props => props.Open ? "block" : "none"};
+        display: ${state => state.Opened ? "block" : "none"};
 
         `     
 
@@ -79,14 +112,14 @@ class Hamburger extends React.Component{
 
         return(
             <div>
-                <HamburgerSelector  onClick={this.props.ToggleBurger} />
-                    <Menu Open={this.props.BurgerOpened}> 
+                <HamburgerSelector  />
+                    <Menu Opened={this.state.Opened}> 
                         <MenuItemText><NavLink style={textStyle} to='/profile'>Your Profile</NavLink></MenuItemText>
                         <MenuItemText><NavLink style={textStyle} to='/settings'>Settings</NavLink></MenuItemText>
                         <MenuItemText><NavLink style={textStyle} to='/login'>Sign In or Sign Up</NavLink></MenuItemText>
                     </Menu>
+                    <input type="button" onClick={this.ToggleBurger} /> 
             </div>
-
         )
 
     }
