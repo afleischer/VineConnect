@@ -13,21 +13,7 @@ class JobList extends React.Component{
 
 		this.populateList = this.populateList.bind(this);
 	
-		this.JobsRef = db.collection('jobs');
 
-		db.collection("jobs").get().then((querySnapshot) => {
-			var jobsArr = [];
-			querySnapshot.forEach(function(doc) {
-				// doc.data() is never undefined for query doc snapshots
-				jobsArr.push(doc.data())
-				console.log( doc.data());
-				console.log("jobsArr is:"+jobsArr)
-			});		
-
-			this.setState({
-				displayedJobs : jobsArr
-			})
-		});
 
 
 	}

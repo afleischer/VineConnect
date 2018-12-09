@@ -6,6 +6,9 @@ import JobList from './FindWork_Children/JobList'
 import styled from 'styled-components';
 import classNames from 'classnames/bind';
 
+import {db} from '../firebase_config'
+
+
 
 import '../styles/index.css';
 
@@ -16,6 +19,22 @@ class FindWork extends React.Component{
 		/*==========
 		Get user position
 		==========*/
+
+		this.JobsRef = db.collection('jobs');
+
+		db.collection("jobs").get().then((querySnapshot) => {
+			var jobsArr = [];
+			querySnapshot.forEach(function(doc) {
+				// doc.data() is never undefined for query doc snapshots
+				jobsArr.push(doc.data())
+				console.log( doc.data());
+				console.log("jobsArr is:"+jobsArr)
+			});		
+
+			this.setState({
+				displayedJobs : jobsArr
+			})
+		});
 
 
 	}

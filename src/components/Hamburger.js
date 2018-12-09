@@ -35,9 +35,6 @@ const HamburgerSelector = (props) => {
 class Hamburger extends React.Component{
     constructor(props){
         super(props);
-
-        console.log("Hamburger's props are"+Object.keys(props));
-
         this.ToggleBurger = this.ToggleBurger.bind(this);
     }
 
@@ -63,9 +60,7 @@ class Hamburger extends React.Component{
             this.setState({
                 Opened: false
             })
-        }    
-        
-		  console.log("Recognized!");
+        }            
 	}
 
     //Will either be opened or closed 
@@ -83,15 +78,17 @@ class Hamburger extends React.Component{
         height: 100vh;
         width:300px;
         position:absolute;
-        right:0;
+        transition: .2s ease-out;
         z-index: 5;
         opacity: 0.8;
-        display: ${state => state.Opened ? "block" : "none"};
+        right: ${state => state.Opened ? "-300px" : "0"};
+        animation: ${state => state.Opened} 1s linear;
 
         `     
+        //        display: ${state => state.Opened ? "block" : "none"};
 
         const MenuItem = styled.div`
-        
+
         `
 
         const MenuItemText = styled.div`

@@ -48,8 +48,6 @@ class App extends React.Component {
         <NavMenu/>
         <Main/>
         
-        <Hamburger/>
-
       </div>
     );
   }
