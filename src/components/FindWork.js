@@ -36,7 +36,6 @@ class FindWork extends React.Component{
 			})
 		});
 
-
 	}
 
 	state = {
@@ -75,7 +74,7 @@ class FindWork extends React.Component{
 
 		return(
 			<div>
-				<h1 className='header_text'>FindWork</h1>
+				<h1 className='header_text'>View the map below to find work</h1>
 				<JobMap userLocation = {this.state.userLocation} />
 				<JobList />
 			</div>

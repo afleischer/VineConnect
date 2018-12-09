@@ -23,8 +23,8 @@ class JobMap extends React.Component {
 
 		const style = {
 			width: '70vw',
-			height: '70vh'
-
+			height: '70vh',
+			border: '2px solid #555555'
 
 		}
 		//Initial GeoLocation
