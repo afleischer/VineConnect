@@ -27,8 +27,6 @@ class FindWork extends React.Component{
 			querySnapshot.forEach(function(doc) {
 				// doc.data() is never undefined for query doc snapshots
 				jobsArr.push(doc.data())
-				console.log( doc.data());
-				console.log("jobsArr is:"+jobsArr)
 			});		
 
 			this.setState({
@@ -82,7 +80,7 @@ class FindWork extends React.Component{
 			<div >
 				<h1 className='header_text'>View the map below to find work</h1>
 					<JobMap userLocation = {this.state.userLocation} />
-					<JobList /> 
+					<JobList Jobs={this.state.displayedJobs} /> 
 			</div>
 		);
 	}

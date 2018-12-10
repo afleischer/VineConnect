@@ -19,7 +19,6 @@ class JobList extends React.Component{
 	}
 	
 	state ={
-		displayedJobs : null
 	}
 	//Props: Jobs (which contain )
 	/*
@@ -41,16 +40,30 @@ class JobList extends React.Component{
 	*/
 	populateList(){
 		//for each jobList item from Firebase
-		var jobs = this.state.displayedJobs;
+		var jobs = this.props.Jobs;
 
 		var returnArray = []
 		//populate a list of jobs
-		if (this.state.displayedJobs !== null){
+		if (this.props.Jobs !== null && this.props.Jobs !== undefined){
 			for (let job of jobs){
-				returnArray.push(<div>
-					<h1>Job: {job.name}</h1>
-					<h3>Posted by: {job.poster} </h3>
-					<h3>Start date: {job.job_start}</h3>
+				/**
+				 * Handle job date (in seconds) and convert to dateTime
+				 */
+				var newDate = new Date(job.job_start.seconds*1000)
+				var hours = newDate.getHours();
+				var minutes = "0"+newDate.getMinutes();
+				var seconds = "0"+newDate.getSeconds();
+				var formattedTime = hours + ":" + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+				const ItemStyle = {
+					'border-bottom': '2px dotted black',
+    				margin: '0 7% 0 11%'
+				}
+
+				returnArray.push(<div style={ItemStyle} className="JobListItem">
+					<h1>Job: {job.job_name}</h1>
+					<h3>Posted by: {job.job_poster} </h3>
+					<h3>Start date: {formattedTime}</h3>
 					
 					<p>{job.description}</p>
 					
@@ -63,7 +76,7 @@ class JobList extends React.Component{
 		}
 
 		return(
-			<div style={map_outer_style}>
+			<div>
 				{returnArray}
 			</div>
 		)

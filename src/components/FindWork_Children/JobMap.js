@@ -1,6 +1,17 @@
 import React from 'react';
 
 /**
+ * Pathing: 
+ * 
+ * index.js
+ * 		App.js
+ * 			Main.js
+ * 			Route -> FindWork 
+ * 				JobMap.js
+ *  */
+
+
+/**
  * Importing Components
  */
 
@@ -58,8 +69,7 @@ class JobMap extends React.Component {
 						lat: this.props.userLocation.lat,
 						lng: this.props.userLocation.lng
 					}}
-					zoom = {12} 
-					
+					zoom = {12} 			
 					/>
 		)
 	}
