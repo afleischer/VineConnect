@@ -58,9 +58,12 @@ class JobList extends React.Component{
 			}
 		}
 
+		const map_outer_style = {
+			display: 'inline-block'
+		}
 
 		return(
-			<div>
+			<div style={map_outer_style}>
 				{returnArray}
 			</div>
 		)
@@ -92,8 +95,11 @@ class JobList extends React.Component{
 		 */
 
 		const List = styled.div`
-			height: 70vh;
-			background-color: grey;
+	    height: 70vh;
+	    background-color: grey;
+	    width: 30vh;
+	    float: right;
+	    display: inline-block;
 		`
 
 
