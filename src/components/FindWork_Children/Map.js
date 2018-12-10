@@ -1,6 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
 
+/**
+ * Importing Components
+ */
+
+import JobList from './JobList';
+
 
 class Map extends React.Component{
 	constructor(props){
@@ -58,6 +64,9 @@ class Map extends React.Component{
 		return(
 			<div ref='map'>
 				Loading Map...
+
+				<JobList />
+
 			</div>
 		)
 	}

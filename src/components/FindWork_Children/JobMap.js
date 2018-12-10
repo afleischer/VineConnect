@@ -1,5 +1,15 @@
 import React from 'react';
 
+/**
+ * Importing Components
+ */
+
+import JobList from './JobList';
+
+/**
+ * Google Maps API modules
+ */
+
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 import {MapStyle} from '../../styles/NavStyler'
@@ -36,7 +46,6 @@ class JobMap extends React.Component {
 		}
 
 		return(
-			<div style={style}>
 				<Map 
 					ref = {this.MapRef}
 					google={this.props.google} 
@@ -52,8 +61,6 @@ class JobMap extends React.Component {
 					zoom = {12} 
 					
 					/>
-
-			</div>
 		)
 	}
 
