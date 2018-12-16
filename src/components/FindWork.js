@@ -73,7 +73,8 @@ class FindWork extends React.Component{
 		var map_outer_style = {
 			display: 'inline-block'		
 		}
-    
+	
+		
 
 
 		return(
