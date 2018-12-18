@@ -20,7 +20,7 @@ const Main = () => {
         <Route exact path="/" component={HomePage}></Route>
         <Route exact path="/find_work" component={FindWork}></Route>
         <Route exact path="/post_work" component={PostWork}></Route>
-        <Route exact path="/log_in" component={Login}></Route>
+        <Route exact path="/login" component={Login}></Route>
     </Switch>
     )
 

@@ -39,7 +39,7 @@ class Hamburger extends React.Component{
     }
 
     state= {
-        Opened : false
+        Closed : true
     }
 
 	ToggleBurger(){
@@ -49,16 +49,16 @@ class Hamburger extends React.Component{
 			Opened: !prevState.opened
 		  }));
         */
-        var openedState = this.state.Opened;
+        var openedState = this.state.Closed;
 
         if(openedState === false){
             this.setState({
-                Opened: true
+                Closed: true
             })
         }
         else if (openedState === true){
             this.setState({
-                Opened: false
+                Closed: false
             })
         }            
 	}
@@ -110,7 +110,7 @@ class Hamburger extends React.Component{
         return(
             <div>
                 <HamburgerSelector  />
-                    <Menu Opened={this.state.Opened}> 
+                    <Menu Opened={this.state.Closed}> 
                         <MenuItemText><NavLink style={textStyle} to='/profile'>Your Profile</NavLink></MenuItemText>
                         <MenuItemText><NavLink style={textStyle} to='/settings'>Settings</NavLink></MenuItemText>
                         <MenuItemText><NavLink style={textStyle} to='/login'>Sign In or Sign Up</NavLink></MenuItemText>
