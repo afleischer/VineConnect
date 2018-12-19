@@ -6,11 +6,12 @@ import styled from 'styled-components'
 import {NavLink} from 'react-router-dom'
 
 
-class Login extends React.Component{
+
+class Signup extends React.Component{
 	constructor(props){
 		super(props);
 
-		this.createUser = this.createUser.bind(this);
+        this.createUser = this.createUser.bind(this);
 		this.updateUID = this.updateUID.bind(this);
 		this.updatePass = this.updatePass.bind(this);
 		this.populateError = this.populateError.bind(this);
@@ -42,34 +43,6 @@ class Login extends React.Component{
 			var errorMessage = error.message;
 			// ...
 		  });
-	}
-
-	validateUser(e){
-		var email = this.state.value_uid;
-		var password = this.state.value_pass;
-
-		/**
-		 * Attempt to log user in
-		 */
-
-		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-			// Handle Errors here.
-			var errorCode = error.code;
-			var errorMessage = error.message;
-
-			this.setState({ 
-				error: true,
-				error_msg: errorMessage
-			});
-
-
-			console.log("error detected, code is:"+errorCode+errorMessage);
-
-			// ...
-		  });
-		  
-
-		//encrypt the password and validate it on the server 
 	}
 
 	updateUID(e){
@@ -114,11 +87,10 @@ class Login extends React.Component{
 
 
 		return(
+            <div>
+                <h2>Already have an account? <NavLink to="Login">Log in.</NavLink></h2>
 
-			<div>
-			<h2>Don't have an account?<NavLink to="Signup"> Sign up.</NavLink></h2>
-
-			<form onSubmit={(e) => this.validateUser(e)}>
+			<form onSubmit={(e) => this.createUser(e)}>
 				<label for = "uname">username:</label>
 					<input onChange = {(e) => this.updateUID(e)} name="uname"></input>
 				<label for = "pass">password:</label>
@@ -126,10 +98,10 @@ class Login extends React.Component{
 				<input type="submit"></input>
 				{this.populateError()}
 			</form>
-			</div>
+            </div>
 		);
 	}
 
 }
 
-export default Login;
+export default Signup;
