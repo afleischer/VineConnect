@@ -2,6 +2,7 @@ import React from 'react'
 
 import styled, { css } from 'styled-components'
 
+import firebase from '../firebase_config'
 import { NavLink, Switch, Route } from 'react-router-dom';
 
 
@@ -36,6 +37,7 @@ class Hamburger extends React.Component{
     constructor(props){
         super(props);
         this.ToggleBurger = this.ToggleBurger.bind(this);
+        this.logOut = this.logOut.bind(this);
     }
 
     state= {
@@ -44,11 +46,6 @@ class Hamburger extends React.Component{
 
 	ToggleBurger(){
 
-        /* 
-		this.setState(prevState => ({
-			Opened: !prevState.opened
-		  }));
-        */
         var openedState = this.state.Closed;
 
         if(openedState === false){
@@ -66,6 +63,15 @@ class Hamburger extends React.Component{
     //Will either be opened or closed 
 
 
+    logOut(){
+
+        if(this.props.loggedIn === false){
+            firebase.auth().signOut().then(function() {
+                console.log("signed out!")
+            })
+        }
+
+    }
 
     render(){  
         /**
@@ -114,6 +120,7 @@ class Hamburger extends React.Component{
                         <MenuItemText><NavLink style={textStyle} to='/profile'>Your Profile</NavLink></MenuItemText>
                         <MenuItemText><NavLink style={textStyle} to='/settings'>Settings</NavLink></MenuItemText>
                         <MenuItemText><NavLink style={textStyle} to='/login'>Sign In or Sign Up</NavLink></MenuItemText>
+                        <MenuItemText onClick={this.logOut}>Log Out</MenuItemText>
                     </Menu>
                     <input type="button" onClick={this.ToggleBurger} /> 
             </div>

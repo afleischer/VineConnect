@@ -7,6 +7,7 @@ import ManageWork from './components/ManageWork'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Footer from './components/Footer'
+import Profile from './components/Profile'
 
 import { NavLink, Switch, Route } from 'react-router-dom';
 
@@ -23,6 +24,8 @@ const Routes = () => {
         <Route exact path="/post_work" component={PostWork}></Route>
         <Route exact path="/login" component={Login}></Route>
         <Route exact path="/signup" component={Signup}></Route>
+        <Route exact path="/profile" render= {(props)=> <Profile {...props} />} />
+
     </Switch>
     )
 

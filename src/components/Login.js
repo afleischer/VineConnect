@@ -9,12 +9,11 @@ import {NavLink} from 'react-router-dom'
 class Login extends React.Component{
 	constructor(props){
 		super(props);
-
-		this.createUser = this.createUser.bind(this);
 		this.updateUID = this.updateUID.bind(this);
 		this.updatePass = this.updatePass.bind(this);
 		this.populateError = this.populateError.bind(this);
-
+		this.validateUser = this.validateUser.bind(this);
+		this.LogOut = this.LogOut.bind(this);
 
 		/**
 		 * 
@@ -23,7 +22,7 @@ class Login extends React.Component{
 	}
 
 	state = {
-		value_uid: '',
+		value_email: '',
 		value_pass: '',
 		error : null
 	}
@@ -33,26 +32,22 @@ class Login extends React.Component{
 	* On login, verify if the user is present server-side
 	**/
 
-	createUser(){
-		var email = this.state.value_uid;
-		var password = this.state.value_pass;
-		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-			// Handle Errors here.
-			var errorCode = error.code;
-			var errorMessage = error.message;
-			// ...
-		  });
-	}
-
 	validateUser(e){
-		var email = this.state.value_uid;
+		var email = this.state.value_email;
 		var password = this.state.value_pass;
 
 		/**
 		 * Attempt to log user in
 		 */
 
-		firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+		 try{
+			var dataStuff = firebase.auth().signInWithEmailAndPassword(email, password);
+			dataStuff.catch(e => console.log(e))
+				.then(function (result) {
+					console.log("The result is:"+result);
+				})
+
+		 }catch(error) {
 			// Handle Errors here.
 			var errorCode = error.code;
 			var errorMessage = error.message;
@@ -66,7 +61,7 @@ class Login extends React.Component{
 			console.log("error detected, code is:"+errorCode+errorMessage);
 
 			// ...
-		  });
+		  };
 		  
 
 		//encrypt the password and validate it on the server 
@@ -75,7 +70,7 @@ class Login extends React.Component{
 	updateUID(e){
 		var test = e;
 		this.setState({
-			value_uid: e.target.value
+			value_email: e.target.value
 		})
 	}
 
@@ -94,10 +89,18 @@ class Login extends React.Component{
 			return (<Error><h2>{this.state.errorMessage}</h2></Error>)
 		}
 
-
-
-		
 	}
+
+	LogOut(){
+		firebase.auth().signOut().then(function() {
+			
+		  }).catch(function(error) {
+			// An error happened.
+		  });
+
+	}
+
+
 	render(){
 
 
@@ -118,14 +121,15 @@ class Login extends React.Component{
 			<div>
 			<h2>Don't have an account?<NavLink to="Signup"> Sign up.</NavLink></h2>
 
-			<form onSubmit={(e) => this.validateUser(e)}>
 				<label for = "uname">username:</label>
 					<input onChange = {(e) => this.updateUID(e)} name="uname"></input>
 				<label for = "pass">password:</label>
 					<input onChange = {(e) => this.updatePass(e)} namse = "pass" type = "password"></input>
-				<input type="submit"></input>
 				{this.populateError()}
-			</form>
+				<button onClick={this.validateUser} type="button">Submit</button>
+				<div onClick={this.LogOut}>
+					<h2>Log Out</h2>
+				</div>
 			</div>
 		);
 	}

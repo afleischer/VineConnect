@@ -36,13 +36,18 @@ class Signup extends React.Component{
 
 	createUser(){
 		var email = this.state.value_uid;
-		var password = this.state.value_pass;
-		firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-			// Handle Errors here.
-			var errorCode = error.code;
-			var errorMessage = error.message;
-			// ...
-		  });
+        var password = this.state.value_pass;
+        try{
+            firebase.auth().createUserWithEmailAndPassword(email, password);
+        }catch(error){
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+
+            console.log(errorMessage + errorCode)
+
+        }
+
 	}
 
 	updateUID(e){

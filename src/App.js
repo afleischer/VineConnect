@@ -44,9 +44,16 @@ class App extends React.Component {
   constructor(props){
     super(props);
 
+    /**
+     * Detect user Auth state change at app level 
+     */
+
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         console.log("user is logged in!")
+        this.setState({
+          session: user
+        })
         // User is signed in.
       } else {
         // No user is signed in.
@@ -57,17 +64,19 @@ class App extends React.Component {
   }
 
 
-  state = {
-    user_session : null
-  }
-
   render() {
+
+    var user = firebase.auth().currentUser;
+    
+    console.log("user is:"+user)
+
+
     return (
       <div className="App">
 
         <NavMenu/>
-        <Routes/>
-        
+        <Routes {...this.state} />
+
       </div>
     );
   }

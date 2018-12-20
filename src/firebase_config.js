@@ -2,7 +2,7 @@ import firebase from 'firebase'
 import firebaseui from 'firebaseui'
 
 import '@firebase/firestore'
-
+import 'firebase/auth'
 
 var config = {
     apiKey: "AIzaSyDkazO1kipHFTiG-ydt4o0zXtHWYAj4jxw",
