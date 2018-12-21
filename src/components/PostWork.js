@@ -8,13 +8,36 @@ class PostWork extends React.Component{
     constructor(props){
         super(props);
 
-        this.AddJob = this.AddJob.bind(this);
+        this.updateJob = this.updateJob.bind(this);
+        this.updateJobStartDate = this.updateJobStartDate.bind(this);
+        this.updateJobEndDate = this.updateJobEndDate.bind(this);
+        this.toggleEndDate = this.toggleEndDate.bind(this);
+
     }
 
-    AddJob(){
-
+    updateJob(e){
+        this.setState({
+            job_name : e.target.value
+        })        
     }
 
+    updateJobStartDate(e){
+        this.setState({
+            job_start : e.target.value
+        })  
+    }
+
+    updateJobEndDate(e){
+        this.setState({
+            job_end : e.target.value
+        })  
+    }
+
+    toggleEndDate(e){
+        this.setState({
+            job_endless : e.target.value
+        })  
+    }
     render(){
 
         const FullWidth = styled.div`
@@ -42,17 +65,15 @@ class PostWork extends React.Component{
 
 
 
-                <form onSubmit={this.AddJob}>
                     <label>Enter Job</label>
-                    <input type="text"></input>
+                    <input onChange={(e) => this.updateJob(e)} type="text"></input>
                     <label>When does the job begin?</label>
-                    <input type="text"></input>
+                    <input onChange={(e) => this.updateJobStartDate(e)} type="text"></input>
                     <label>When does the job end?</label>
-                    <input type="text"></input>
-                    <label>No set end date</label>
-                    <input type="checkbox" onChange={this.toggle}></input>
+                    <input onChange={(e) => this.updateJobEndDate(e)} type="text"></input>
+                    <label>No set end date?  Check here.</label>
+                    <input type="checkbox" onChange={(e) => this.toggleEndDate(e)}></input>
                     <input type="submit"></input>
-                </form>
 
 
             </div>

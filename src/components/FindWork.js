@@ -16,6 +16,8 @@ class FindWork extends React.Component{
 	constructor(props){
 		super(props);
 
+		this.toggleViewLock = this.toggleViewLock.bind(this);
+
 		/*==========
 		Get user position
 		==========*/
@@ -42,6 +44,12 @@ class FindWork extends React.Component{
 			lng: 122.4194
 		}
 		//All the jobs that are available within a given area
+	}
+
+	toggleViewLock(){
+		this.setState(prevState => ({
+			view_lock : !prevState.view_lock
+		}))
 	}
 
 	fetchJobs(){
@@ -82,6 +90,8 @@ class FindWork extends React.Component{
 				<h1 className='header_text'>View the map below to find work</h1>
 					<JobMap userLocation = {this.state.userLocation} />
 					<JobList Jobs={this.state.displayedJobs} /> 
+					<label>Show only jobs on map?</label>
+				<input type="checkbox" onClick={this.toggleViewLock} />
 			</div>
 		);
 	}
