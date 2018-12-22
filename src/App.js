@@ -55,7 +55,7 @@ class App extends React.Component {
    */
   componentDidMount() {
 
-      firebase.auth().onAuthStateChanged(function(user) {
+      firebase.auth().onAuthStateChanged(user => {
 
         var theUser;
 
@@ -72,6 +72,9 @@ class App extends React.Component {
           // No user is signed in.
           console.log("user is not logged in!")
           theUser = null;
+          this.setState({
+            session: theUser
+          });
         }
       })
   }
@@ -87,7 +90,7 @@ class App extends React.Component {
       <div className="App">
 
         <NavMenu/>
-        <Routes {...this.state} />
+        <Routes Session={this.state.session} />
         <Footer />
 
       </div>
