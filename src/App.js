@@ -44,25 +44,37 @@ class App extends React.Component {
   constructor(props){
     super(props);
 
-    /**
-     * Detect user Auth state change at app level 
-     */
-
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        console.log("user is logged in!")
-        this.setState({
-          session: user
-        })
-        // User is signed in.
-      } else {
-        // No user is signed in.
-        console.log("user is not logged in!")
-      }
-    });
-
   }
 
+  state ={
+    test: "foo"
+  }
+
+  /**
+   * Detect user Auth state change at app level
+   */
+  componentDidMount() {
+
+      firebase.auth().onAuthStateChanged(function(user) {
+
+        var theUser;
+
+        if (user) {
+          console.log("user is logged in!");
+
+          theUser = user;
+
+          this.setState({
+            session: theUser
+          });
+          // User is signed in.
+        } else {
+          // No user is signed in.
+          console.log("user is not logged in!")
+          theUser = null;
+        }
+      })
+  }
 
   render() {
 
@@ -76,6 +88,7 @@ class App extends React.Component {
 
         <NavMenu/>
         <Routes {...this.state} />
+        <Footer />
 
       </div>
     );

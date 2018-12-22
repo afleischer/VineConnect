@@ -4,11 +4,14 @@ import React from 'react'
 
 import styled, { css } from 'styled-components'
 import classNames from 'classnames/bind';
+import NavLink from "react-router-dom/es/NavLink";
 
 class HomePage extends React.Component{
 
     render(){
-        var bg_img = '../img/grapes_first.jpg'
+
+
+
         const FullWidth = styled.div`
         width: 100vw;
         height: 500px;
@@ -18,7 +21,37 @@ class HomePage extends React.Component{
 
         `
 
+        const FullWidth2 = styled.div`
+        width: 100vw;
+        height: 500px;
+        background-image: url(${process.env.PUBLIC_URL + '/agriculture_clouds.jpg'});
+        background-size: cover;
+        background-position: -18%;
+        `
+
         const LeftOverlay = styled.div`
+        background-color: rgba(105, 116, 119, 0.55);
+        color: white;
+        position: relative;
+        top: 15%;
+        width: 50%;
+        margin: auto;
+        padding: 2%;
+        transform: translateX(-23%);
+
+        @media screen and (max-width: 824px){
+            width: 100vw;
+            transform: translateX(0%);
+            padding:0;
+
+        }
+
+        @media screen and (min-width: 1640px){
+            padding: 1%
+        }
+        `
+
+        const RightOverlay = styled.div`
         background-color: rgba(105, 116, 119, 0.55);
         color: white;
         position: relative;
@@ -73,6 +106,21 @@ you started.</p>
                         </InnerPadding>
                     </LeftOverlay>  
 
+                </FullWidth>
+
+
+                <FullWidth2>
+                    <RightOverlay>
+                        <MainHeader>Looking for vineyard work?</MainHeader>
+                        <p><NavLink to={'/find_work'}>Click here</NavLink> to search for vineyard jobs in your community.</p>
+                    </RightOverlay>
+                </FullWidth2>
+
+                <FullWidth>
+                    <RightOverlay>
+                        <MainHeader>Need vineyard help?</MainHeader>
+                        <p><NavLink to={'/post_work'}>Click here</NavLink> to post a job and get staffed up for the harvest.</p>
+                    </RightOverlay>
                 </FullWidth>
             </div>
         )

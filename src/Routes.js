@@ -16,7 +16,7 @@ import { NavLink, Switch, Route } from 'react-router-dom';
 // <Route exact path="/profile" component={Profile}></Route>
 
 
-const Routes = () => {
+const Routes = (props) => {
     return(
     <Switch>
         <Route exact path="/" component={HomePage}></Route>

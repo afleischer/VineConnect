@@ -2,25 +2,29 @@ import React from 'react'
 
 import styled, { css } from 'styled-components'
 
-const Login = (props) => {
-
-    //Will either be opened or closed 
-
-    /**
-     * Hamburger menu styles 
-     */
+class Footer extends React.Component{
+    constructor(props){
+        super(props);
 
 
+    }
 
-    return(
-        <div>
-            
+    render(){
 
-        </div>
+        const FooterContainer = styled.div`
+            height: 10vh;
+            background-color: #666699;
+            width: 100vw;
+        `
 
-    )
+        return(
+            <FooterContainer>
 
-    
+
+            </FooterContainer>
+        )
+    }
+
 }
 
-export default Login
+export default Footer;
