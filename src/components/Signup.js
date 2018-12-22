@@ -4,7 +4,7 @@ import firebase from '../firebase_config'
 
 import styled from 'styled-components'
 import {NavLink} from 'react-router-dom'
-
+import {db} from "../firebase_config"
 
 
 class Signup extends React.Component{
@@ -38,8 +38,14 @@ class Signup extends React.Component{
 		var email = this.state.value_uid;
         var password = this.state.value_pass;
         try{
-            firebase.auth().createUserWithEmailAndPassword(email, password);
-        }catch(error){
+			firebase.auth().createUserWithEmailAndPassword(email, password)
+				.then(function(user){
+					db.collection("users").doc(user.uid).set({
+						uid: user.uid,
+						user_email: user.email
+					})
+				})
+		}catch(error){
             // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;

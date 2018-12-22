@@ -17,12 +17,12 @@ const Routes = (props) => {
 
     return(
     <Switch {...props}>
-        <Route exact path="/" render={()=> (<HomePage {...props} Session={props.Session}/>)} />
-        <Route exact path="/find_work" render={() => (<FindWork  {...props} Session={props.Session}/>)} />
-        <Route exact path="/post_work" render={() => (<PostWork  {...props} Session={props.Session}/>)} />
-        <Route exact path="/login" render={()=> (<Login  {...props} />)} Session={props.Session}/>
-        <Route exact path="/signup" render={()=> (<Signup  {...props} />)} Session={props.Session}/>
-        <Route exact path="/profile" render= {()=> <Profile  {...props} />} Session={props.Session}/>
+        <Route exact path="/" render={()=> (<HomePage {...props}/>)} />
+        <Route exact path="/find_work" render={() => (<FindWork  {...props}/>)} />
+        <Route exact path="/post_work" render={() => (<PostWork  {...props}/>)} />
+        <Route exact path="/login" render={()=> (<Login  {...props} />)}/>
+        <Route exact path="/signup" render={()=> (<Signup  {...props} />)}/>
+        <Route exact path="/profile" render= {()=> <Profile  {...props} />}/>
     </Switch>
     )
 
