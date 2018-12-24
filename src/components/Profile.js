@@ -24,7 +24,7 @@ class Profile extends React.Component{
 
         return(
             <div>
-            	<UserProfile user={this.props.session} />
+            	<UserProfile user={this.props.Session} />
             </div>
         )
     }
@@ -40,9 +40,13 @@ const UserProfile = (props) => {
 	if(user){
 		var fb_ref = db.collection('users');
 
-		var match = fb_ref.where("user_name", "==", user);
+		var query = fb_ref.where("user_name", "==", user.uid);
 
 		console.log("match is:"+match);
+
+        //for each match 
+
+        var match = (<div>{query.uid}</div>)
 	}
 
 	else{
