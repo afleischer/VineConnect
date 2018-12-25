@@ -9,7 +9,10 @@ class Profile extends React.Component{
 
         this.fetchProfile = this.fetchProfile.bind(this);
 
-        console.log("props received in Profile is"+props)
+        console.log("props received in Profile is"+props);
+
+
+
     }
 
 
@@ -17,44 +20,113 @@ class Profile extends React.Component{
 
     	//Logged-in user
 
-
     }
 
     render(){
 
         return(
             <div>
-            	<UserProfile user={this.props.Session} />
+            	<UserProfile  user={this.props.Session} />
             </div>
         )
     }
 }
 
 
-const UserProfile = (props) => {
+class UserProfile extends React.Component {
+    constructor(props) {
+        super(props);
 
-	var user = props.user;
+        /**
+         * Listener for Profile data
+         */
 
-	//for each en
+        firebase.auth().onAuthStateChanged(userdata => {
+            var fb_ref = db.collection('users');
+            if (props.user.uid != null) {
+                fb_ref.where("uid", "==", props.user.uid)
+                    .get()
+                    .then(querySnapshot => {
+                        let docArr = ["foo"];
+                        console.log("querySnapshot is:" + querySnapshot);
+                        querySnapshot.forEach(doc => {
+                            docArr.push(doc.data());
+                        });
+                        this.setState({
+                            user_docs: docArr
+                        })
+                    })
+            }
 
-	if(user){
-		var fb_ref = db.collection('users');
+        })
 
-		var query = fb_ref.where("user_name", "==", user.uid);
+    }
 
-		console.log("match is:"+match);
+    /*
 
-        //for each match 
+var user = props.user;
 
-        var match = (<div>{query.uid}</div>)
-	}
+var fb_ref = db.collection('users');
 
-	else{
-		var match = "Log in to access your profile";
-	}
+try{
+    var match = this.state.user_docs;
+}catch{}
 
-	return match
+if(user){
 
+    fb_ref.where("uid", "==", user.uid)
+        .get()
+        .then(querySnapshot => {
+            let docArr= ["foo"];
+            console.log("querySnapshot is:"+querySnapshot);
+            querySnapshot.forEach(doc => {
+                docArr.push(doc.data());
+            });
+            this.setState({
+                user_docs: docArr
+            })
+        })
+
+    console.log("match is:"+match);
+
+    //for each match
+
+}
+*/
+
+    render() {
+
+        var returnValPre = [];
+        try{
+
+            var returned = this.state.user_docs;
+            var returnedLength = returned.length;
+            for(let i = 0; i < returnedLength; i++){
+                returnValPre.push(returned[i]);
+            }
+            var returnVal = (<div>
+                <h2>Your Username:</h2>
+                <h3>{returnValPre[1].user_name}</h3>
+                <h2>Your Business:</h2>
+                <h3>{returnValPre[1].user_business}</h3>
+                <h2>Chat History:</h2>
+                <h3>{returnValPre[1].user_chats}</h3>
+                <h2>Jobs You've Accepted:</h2>
+                <h3>{returnValPre[1].user_current_jobs}</h3>
+                <h2>Profile Photo:</h2>
+                <h3>{returnValPre[1].user_photo}</h3>
+                <h2>Your Description:</h2>
+                <h3>{returnValPre[1].user_profile_description}</h3>
+            </div>)
+        }catch(error){
+            var returnVal = (<div> Nope nothing</div>);
+        }
+
+        return (
+            returnVal
+        )
+
+    }
 }
 
 export default Profile
