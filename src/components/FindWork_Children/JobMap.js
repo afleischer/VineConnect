@@ -1,17 +1,6 @@
 import React from 'react';
 
 /**
- * Pathing: 
- * 
- * index.js
- * 		App.js
- * 			Main.js
- * 			Route -> FindWork 
- * 				JobMap.js
- *  */
-
-
-/**
  * Importing Components
  */
 
@@ -31,13 +20,6 @@ class JobMap extends React.Component {
 
 		this.MapRef = React.createRef();
 	}
-	//var api_key = this.props.api_key;
-	//var gMapsSrc = "https://maps.googleapis.com/maps/api/js?key="+{api_key}+"&callback=initMap";
-
-	//To return: 
-		//google maps script
-		//
-
 
 
 	render(){
@@ -56,6 +38,10 @@ class JobMap extends React.Component {
 			return <div>Map Loading...</div>
 		}
 
+		/**
+		 * Fetch markers (do we do this here?)
+		 */
+
 		return(
 				<Map 
 					ref = {this.MapRef}
@@ -70,7 +56,8 @@ class JobMap extends React.Component {
 						lng: this.props.userLocation.lng
 					}}
 					zoom = {12} 			
-					/>
+					>
+				</Map>
 		)
 	}
 

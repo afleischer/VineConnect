@@ -15,7 +15,7 @@ import Footer from './components/Footer'
 import Routes from './Routes'
 import Hamburger from './components/Hamburger'
 
-import firebase from './firebase_config'
+import firebase, {db} from './firebase_config'
 
 import {connect} from 'react-redux'
 
@@ -57,6 +57,7 @@ class App extends React.Component {
 
       firebase.auth().onAuthStateChanged(user => {
 
+        // User is signed in.
         var theUser;
 
         if (user) {
@@ -64,10 +65,20 @@ class App extends React.Component {
 
           theUser = user;
 
-          this.setState({
-            session: theUser
-          });
-          // User is signed in.
+          var fb_ref = db.collection('users');
+            fb_ref.where("uid", "==", user.uid)
+                .get()
+                .then(querySnapshot => {
+                  let docArr = ["foo"];
+                  console.log("querySnapshot is:" + querySnapshot);
+                  querySnapshot.forEach(doc => {
+                    docArr.push(doc.data());
+                  });
+                  this.setState({
+                    session: theUser,
+                    user_docs: docArr
+                  })
+                })
         } else {
           // No user is signed in.
           console.log("user is not logged in!")
@@ -90,7 +101,7 @@ class App extends React.Component {
       <div className="App">
 
         <NavMenu/>
-        <Routes Session={this.state.session} />
+        <Routes UserData={this.state.user_docs} Session={this.state.session} />
         <Footer />
 
       </div>

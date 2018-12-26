@@ -19,7 +19,7 @@ class Map extends React.Component{
 					lng: lng
 				}
 			}
-
+		this.renderChildren = this.renderChildren.bind(this);
 	}
 
 
@@ -58,13 +58,22 @@ class Map extends React.Component{
 		}
 	}
 
+	/**
+	 * Used for rendering Marker components
+	 */
+	renderChildren(){
+		//for each latitude and longitude
+		//in the JobList
 
+		//
+
+	}
 
 	render(){
 		return(
 			<div ref='map'>
 				Loading Map...
-
+				{this.renderChildren()}
 				<JobList />
 
 			</div>

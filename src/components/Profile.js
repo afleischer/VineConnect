@@ -26,7 +26,7 @@ class Profile extends React.Component{
 
         return(
             <div>
-            	<UserProfile  user={this.props.Session} />
+            	<UserProfile UserData={this.props.UserData} user={this.props.Session} />
             </div>
         )
     }
@@ -41,6 +41,7 @@ class UserProfile extends React.Component {
          * Listener for Profile data
          */
 
+        /*
         firebase.auth().onAuthStateChanged(userdata => {
             var fb_ref = db.collection('users');
             if (props.user.uid != null) {
@@ -59,7 +60,7 @@ class UserProfile extends React.Component {
             }
 
         })
-
+        */
     }
 
     /*
@@ -99,7 +100,7 @@ if(user){
         var returnValPre = [];
         try{
 
-            var returned = this.state.user_docs;
+            var returned = this.props.UserData;
             var returnedLength = returned.length;
             for(let i = 0; i < returnedLength; i++){
                 returnValPre.push(returned[i]);
