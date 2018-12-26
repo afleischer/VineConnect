@@ -19,8 +19,24 @@ class JobMap extends React.Component {
 		super(props);
 
 		this.MapRef = React.createRef();
+		this.renderMarkers = this.renderMarkers.bind(this);
 	}
 
+
+	renderMarkers(){
+		//for every job in this.props.Jobs
+		var jobsArr = this.props.Jobs;
+
+		if(jobsArr){
+			var jALength = jobsArr.length;
+			for(let i = 0; i < jALength; i++){
+				let marker = new google.maps.Marker({
+					position: jobsArr[i].job_location
+				})
+				
+			}
+		}
+	}
 
 	render(){
 
@@ -55,7 +71,8 @@ class JobMap extends React.Component {
 						lat: this.props.userLocation.lat,
 						lng: this.props.userLocation.lng
 					}}
-					zoom = {12} 			
+					zoom = {12}
+					onGoogleApiLoaded={({map, maps}) => this.renderMarkers()}
 					>
 				</Map>
 		)

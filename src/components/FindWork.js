@@ -36,6 +36,8 @@ class FindWork extends React.Component{
 			})
 		});
 
+
+
 	}
 
 	state = {
@@ -88,7 +90,7 @@ class FindWork extends React.Component{
 		return(
 			<div >
 				<h1 className='header_text'>View the map below to find work</h1>
-					<JobMap userLocation = {this.state.userLocation} />
+					<JobMap Jobs={this.state.displayedJobs} userLocation = {this.state.userLocation} />
 					<JobList Jobs={this.state.displayedJobs} /> 
 					<label>Show only jobs on map?</label>
 				<input type="checkbox" onClick={this.toggleViewLock} />
