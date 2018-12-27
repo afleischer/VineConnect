@@ -3,6 +3,8 @@ import React from 'react'
 import '../styles/PostWork.css'
 
 import styled from 'styled-components'
+import Autocomplete from 'react-google-autocomplete';
+
 
 class PostWork extends React.Component{
     constructor(props){
@@ -12,6 +14,7 @@ class PostWork extends React.Component{
         this.updateJobStartDate = this.updateJobStartDate.bind(this);
         this.updateJobEndDate = this.updateJobEndDate.bind(this);
         this.toggleEndDate = this.toggleEndDate.bind(this);
+        this.updateAddress = this.updateAddress.bind(this);
 
     }
 
@@ -37,6 +40,11 @@ class PostWork extends React.Component{
         this.setState({
             job_endless : e.target.value
         })  
+    }
+    updateAddress(e){
+        //validate the address with google autocomplete
+
+
     }
     render(){
 
@@ -73,6 +81,12 @@ class PostWork extends React.Component{
                     <input onChange={(e) => this.updateJobEndDate(e)} type="text"></input>
                     <label>No set end date?  Check here.</label>
                     <input type="checkbox" onChange={(e) => this.toggleEndDate(e)}></input>
+                    <label>Where will the job be at? </label>
+                    <Autocomplete
+                        onChange={(e) => this.updateAddress(e)}
+                        onPlaceSelected={(place) => console.log("place is:"+place)}
+                    />
+
                     <input type="submit"></input>
 
 
