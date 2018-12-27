@@ -41,8 +41,10 @@ class JobMap extends React.Component {
 		*/
 	}
 
-	onMarkerClick(){
-		
+	onMarkerClick(e){
+		//when clicked,
+
+		//open a window (check the Google Maps API for how to do this
 	}
 
 	render(){

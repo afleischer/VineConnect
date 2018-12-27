@@ -21,5 +21,10 @@ Globals
 
 
 .header_text{
-	font-family: EB Garamond;	
+	font-family: EB Garamond;
+  margin: 0;
+}
+
+.find_work_header{
+  background-color: rgba(105,116,119,0.55);
 }

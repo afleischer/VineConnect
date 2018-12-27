@@ -56,6 +56,7 @@ class HomePage extends React.Component{
         color: white;
         position: relative;
         top: 15%;
+        left: 29%;
         width: 50%;
         margin: auto;
         padding: 2%;
@@ -117,10 +118,10 @@ you started.</p>
                 </FullWidth2>
 
                 <FullWidth>
-                    <RightOverlay>
+                    <LeftOverlay>
                         <MainHeader>Need vineyard help?</MainHeader>
                         <p><NavLink to={'/post_work'}>Click here</NavLink> to post a job and get staffed up for the harvest.</p>
-                    </RightOverlay>
+                    </LeftOverlay>
                 </FullWidth>
             </div>
         )

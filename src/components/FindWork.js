@@ -88,8 +88,8 @@ class FindWork extends React.Component{
 
 
 		return(
-			<div >
-				<h1 className='header_text'>View the map below to find work</h1>
+			<div className="find_work_header">
+				<h1 className='header_text'>Available Work</h1>
 					<JobMap Jobs={this.state.displayedJobs} userLocation = {this.state.userLocation} />
 					<JobList Jobs={this.state.displayedJobs} /> 
 					<label>Show only jobs on map?</label>
