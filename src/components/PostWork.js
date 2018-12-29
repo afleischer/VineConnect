@@ -15,6 +15,7 @@ class PostWork extends React.Component{
         this.updateJobEndDate = this.updateJobEndDate.bind(this);
         this.toggleEndDate = this.toggleEndDate.bind(this);
         this.updateAddress = this.updateAddress.bind(this);
+        this.loginCheck = this.loginCheck.bind(this);
 
     }
 
@@ -46,6 +47,9 @@ class PostWork extends React.Component{
 
 
     }
+    loginCheck(e){
+
+    }
     render(){
 
         const FullWidth = styled.div`
@@ -60,35 +64,138 @@ class PostWork extends React.Component{
             "background-image": "url(/work.jpg);" 
         }
 
-        return(
-            <div>
 
-                    <FullWidth>
-                     <h2>Need help for a job?</h2>
+        const LeftOverlay = styled.div`
+        background-color: rgba(105, 116, 119, 0.55);
+        color: white;
+        position: relative;
+        top: 15%;
+        width: 50%;
+        margin: auto;
+        padding: 2%;
+        transform: translateX(-23%);
 
-                    </FullWidth>
+        @media screen and (max-width: 824px){
+            width: 100vw;
+            transform: translateX(0%);
+            padding:0;
+
+        }
+
+        @media screen and (min-width: 1640px){
+            padding: 1%
+        }
+        `
 
 
-                    <h4>If you need help with a job, post it here and others can see where it is!</h4>
+        const InnerPadding = styled.div`
+        padding: 4.2%;
+        `
 
+        const MainHeader = styled.h2`
+        font-family: "EB Garamond";
+        margin-bottom: 0;
+        margin-top: 0;
+        font-weight: 400;
+        font-size: 42px;
+        `
 
+        const RightOverlay = styled.div`
+        background-color: rgba(105, 116, 119, 0.55);
+        color: white;
+        position: relative;
+        top: 15%;
+        left: 29%;
+        width: 50%;
+        margin: auto;
+        padding: 2%;
+        transform: translateX(-23%);
 
-                    <label>Enter Job</label>
-                    <input onChange={(e) => this.updateJob(e)} type="text"></input>
-                    <label>When does the job begin?</label>
+        @media screen and (max-width: 824px){
+            width: 100vw;
+            transform: translateX(0%);
+            padding:0;
+
+        }
+
+        @media screen and (min-width: 1640px){
+            padding: 1%
+        }
+        `
+
+        const JobForm = styled.div`
+        padding: 20px 15%;
+        `
+
+        /***
+        * Conditional section that 
+        */
+
+        let loginCheck = null;
+
+        if(this.props.Session){
+            loginCheck = (
+                <div>
+                    <h2> Job Post form</h2>
+                    <p>
+                        <label>Enter Job</label>
+                        <input onChange={(e) => this.updateJob(e)} type="text"></input>
+                    </p>
+                    <p>
+                        <label>When does the job begin?</label>
                     <input onChange={(e) => this.updateJobStartDate(e)} type="text"></input>
-                    <label>When does the job end?</label>
+                    </p>
+
+                    <p>
+<label>When does the job end?</label>
                     <input onChange={(e) => this.updateJobEndDate(e)} type="text"></input>
-                    <label>No set end date?  Check here.</label>
+                    </p>
+
+                    <p>
+<label>No set end date?  Check here.</label>
                     <input type="checkbox" onChange={(e) => this.toggleEndDate(e)}></input>
-                    <label>Where will the job be at? </label>
-                    <Autocomplete
-                        onChange={(e) => this.updateAddress(e)}
-                        onPlaceSelected={(place) => console.log("place is:"+place)}
-                    />
+                    </p>
+                    
+                    <p>
+                        <label>Where will the job be at? </label>
+                        <Autocomplete
+                            onChange={(e) => this.updateAddress(e)}
+                            onPlaceSelected={(place) => console.log("place is:"+place)}
+                        />
+                    </p>
+                    
+                
 
                     <input type="submit"></input>
 
+                </div>
+                )
+
+        }
+        else if(!this.props.Session){
+
+            loginCheck = (
+                <div>
+                    <h1>You must be <a href="/login">logged in</a> to post work.  Need an account?  <a href="/signup">Sign up.</a></h1>
+                </div>
+            )            
+        }
+
+        return(
+            <div>
+
+                <FullWidth>
+                  <RightOverlay> 
+                      <InnerPadding>
+                      <MainHeader>Need help to find a job?</MainHeader>
+                        <h4>Post it here and others can see where it is!</h4>
+                        </InnerPadding>
+                    </RightOverlay>  
+
+                </FullWidth>
+
+
+                {loginCheck}
 
             </div>
 

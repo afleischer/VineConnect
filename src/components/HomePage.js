@@ -100,9 +100,9 @@ class HomePage extends React.Component{
                       <MainHeader>Grow the Community.</MainHeader>
                       <p>VineConnect is a portal to connect local grape growers and 
 vignerons with local help for seasonal work.</p>
-                    <p>Are you a grower?  Create an account and we can help get you
+                    <p>Are you a grower? <a href="/signup">Create an account</a> and we can help get you
 the work you need.</p>
-                    <p>Are you looking for work?  <a>Create an account</a> and we’ll get 
+                    <p>Are you looking for work?  <a href="/signup">Create an account</a> and we’ll get 
 you started.</p>
                         </InnerPadding>
                     </LeftOverlay>  
