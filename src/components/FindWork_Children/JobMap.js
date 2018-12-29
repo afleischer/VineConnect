@@ -42,7 +42,42 @@ class JobMap extends React.Component {
 	}
 
 	onMarkerClick(e){
-		//when clicked,
+		/**
+		 * Open the infoWindow
+		 * (InfoWindow has built-in closure method)
+		 */
+
+
+		//hopefully this should be the target element...
+		var marker = e.target;
+		var all_jobs = this.props.Jobs;
+		//content string will be the job associated with the place
+		var infoWineow;
+
+		var job_latlng = marker.position;
+
+		//get the job listing where the job_latlng matches the
+
+		for (var item of all_jobs){
+			if(item.job_location == job_latlng){
+				infoWindow = new google.maps.InfoWindow({
+					content : item.job_description,
+					center : job_latlng
+				})
+			}
+		}
+
+
+	markerGenerate(){
+			/***
+			 * SPRINT THIS!!!
+			 */
+
+			//
+
+		}
+
+
 
 		//open a window (check the Google Maps API for how to do this
 	}
@@ -83,14 +118,8 @@ class JobMap extends React.Component {
 					zoom = {12}
 					onGoogleApiLoaded={({map, maps}) => this.renderMarkers()}
 					>
-					<Marker
-						onClick={this.onMarkerClick}
-						title={'Test Marker'}
-						position={{
-							lat: 46.3213,
-							lng: -120.0130
-						}}
-					/>
+					{this.markerGenerate()}
+
 				</Map>
 		)
 	}

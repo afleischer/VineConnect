@@ -138,17 +138,17 @@ class PostWork extends React.Component{
                 <div>
                     <h2> Job Post form</h2>
                     <p>
-                        <label>Enter Job</label>
+                        <label>Describe the job:</label>
                         <input onChange={(e) => this.updateJob(e)} type="text"></input>
                     </p>
                     <p>
                         <label>When does the job begin?</label>
-                    <input onChange={(e) => this.updateJobStartDate(e)} type="text"></input>
+                    <input type="datetime-local" onChange={(e) => this.updateJobStartDate(e)} type="text"></input>
                     </p>
 
                     <p>
 <label>When does the job end?</label>
-                    <input onChange={(e) => this.updateJobEndDate(e)} type="text"></input>
+                    <input type="datetime-local" onChange={(e) => this.updateJobEndDate(e)} type="text"></input>
                     </p>
 
                     <p>
