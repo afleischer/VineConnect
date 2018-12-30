@@ -10,7 +10,7 @@ import JobList from './JobList';
  * Google Maps API modules
  */
 
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {google, Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 import {MapStyle} from '../../styles/NavStyler'
 
@@ -21,6 +21,7 @@ class JobMap extends React.Component {
 		this.MapRef = React.createRef();
 		this.renderMarkers = this.renderMarkers.bind(this);
 		this.onMarkerClick = this.onMarkerClick.bind(this);
+		this.markerGenerate = this.markerGenerate.bind(this);
 	}
 
 
@@ -48,38 +49,16 @@ class JobMap extends React.Component {
 		 */
 
 
-		//hopefully this should be the target element...
-		var marker = e.target;
-		var all_jobs = this.props.Jobs;
-		//content string will be the job associated with the place
-		var infoWineow;
 
-		var job_latlng = marker.position;
-
-		//get the job listing where the job_latlng matches the
-
-		for (var item of all_jobs){
-			if(item.job_location == job_latlng){
-				infoWindow = new google.maps.InfoWindow({
-					content : item.job_description,
-					center : job_latlng
-				})
-			}
-		}
-
+	}
 
 	markerGenerate(){
-			/***
-			 * SPRINT THIS!!!
-			 */
-
-			//
-
-		}
+		/***
+		 * Set the selected marker'
+		 *
+		 */
 
 
-
-		//open a window (check the Google Maps API for how to do this
 	}
 
 	render(){
@@ -91,6 +70,12 @@ class JobMap extends React.Component {
 			display: 'inline-block'
 
 		}
+
+		const InfoStyle = {
+			width: '20px',
+			height: '20px',
+			border: '2px solid #44444'
+		}
 		//Initial GeoLocation
 		
 
@@ -101,6 +86,29 @@ class JobMap extends React.Component {
 		/**
 		 * Fetch markers (do we do this here?)
 		 */
+
+		var MapMarkers = [];
+		var InfoWindows = [];
+
+		//for every job
+		var allJobs = this.props.Jobs;
+		if(allJobs){
+			//iterate through...
+			for(let job of allJobs){
+				MapMarkers.push(<Marker  name={job.job_description}
+										  position={{lat: job.job_location._lat, lng: job.job_location._long}}
+										 onClick={(e) => this.onMarkerClick(e)}
+				>
+					<InfoWindow visible={false} content={job.job_description}  style={InfoStyle}>
+						<h1>Test test test</h1>
+					</InfoWindow>
+				</Marker>)
+
+
+			}
+
+		}
+
 
 		return(
 				<Map 
@@ -118,7 +126,9 @@ class JobMap extends React.Component {
 					zoom = {12}
 					onGoogleApiLoaded={({map, maps}) => this.renderMarkers()}
 					>
-					{this.markerGenerate()}
+
+					{MapMarkers}
+					{InfoWindows}
 
 				</Map>
 		)
