@@ -100,7 +100,7 @@ class App extends React.Component {
     return (
       <div className="App">
 
-        <NavMenu/>
+        <NavMenu UserData={this.state.user_docs} />
         <Routes UserData={this.state.user_docs} Session={this.state.session} />
         <Footer />
 

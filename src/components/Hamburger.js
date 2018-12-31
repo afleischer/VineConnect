@@ -65,7 +65,7 @@ class Hamburger extends React.Component{
 
     logOut(){
 
-        if(this.props.loggedIn === false){
+        if(this.props.UserData){
             firebase.auth().signOut().then(function() {
                 console.log("signed out!")
             })
@@ -112,6 +112,14 @@ class Hamburger extends React.Component{
             color: 'white'
         }
 
+        var session = this.props.UserData;
+        var LoginOption;
+        if(!session){
+            LoginOption = (<MenuItemText><NavLink style={textStyle} to='/login'>Sign In or Sign Up</NavLink></MenuItemText>)
+        }
+        if(session){
+            LoginOption = (null);
+        }
 
         return(
             <div>
@@ -119,7 +127,7 @@ class Hamburger extends React.Component{
                     <Menu Opened={this.state.Closed}> 
                         <MenuItemText><NavLink style={textStyle} to='/profile'>Your Profile</NavLink></MenuItemText>
                         <MenuItemText><NavLink style={textStyle} to='/settings'>Settings</NavLink></MenuItemText>
-                        <MenuItemText><NavLink style={textStyle} to='/login'>Sign In or Sign Up</NavLink></MenuItemText>
+                        {LoginOption}
                         <MenuItemText onClick={this.logOut}>Log Out</MenuItemText>
                     </Menu>
                     <input type="button" onClick={this.ToggleBurger} /> 

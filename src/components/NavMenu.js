@@ -88,7 +88,7 @@ class NavMenu extends React.Component{
 				<NavOption>
 					<NavOptionText><NavLink onClick={() => this.setSelected("post_work")} to='/post_work'>Post Work</NavLink></NavOptionText>
 				</NavOption>
-				<Hamburger ToggleBurger={this.toggleBurger} BurgerOpened={this.state.hamburger_open}/>
+				<Hamburger  ToggleBurger={this.toggleBurger} BurgerOpened={this.state.hamburger_open} UserData={this.props.UserData}/>
 			</NavStyler>
 				)
 	}
