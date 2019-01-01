@@ -8,7 +8,7 @@ import { NavLink, Switch, Route } from 'react-router-dom';
 
 const HamburgerSelector = (props) => {
 
-
+    const ToggleMenu = props.ToggleMenu;
 
     const TopStyle = {
         position: "absolute",
@@ -24,7 +24,7 @@ const HamburgerSelector = (props) => {
     }
 
     return(
-        <div style={TopStyle}> 
+        <div onClick={ToggleMenu} style={TopStyle}>
             <div style={style}></div>
             <div style={style}></div>
             <div style={style}></div>
@@ -38,6 +38,7 @@ class Hamburger extends React.Component{
         super(props);
         this.ToggleBurger = this.ToggleBurger.bind(this);
         this.logOut = this.logOut.bind(this);
+        this.toggleMenu = this.toggleMenu.bind(this);
     }
 
     state= {
@@ -71,6 +72,12 @@ class Hamburger extends React.Component{
             })
         }
 
+    }
+
+    toggleMenu(e){
+        this.setState(prevState => ({
+            Closed : !prevState.Closed
+        }))
     }
 
     render(){  
@@ -123,14 +130,13 @@ class Hamburger extends React.Component{
 
         return(
             <div>
-                <HamburgerSelector  />
+                <HamburgerSelector ToggleMenu={this.toggleMenu}  />
                     <Menu Opened={this.state.Closed}> 
                         <MenuItemText><NavLink style={textStyle} to='/profile'>Your Profile</NavLink></MenuItemText>
                         <MenuItemText><NavLink style={textStyle} to='/settings'>Settings</NavLink></MenuItemText>
                         {LoginOption}
                         <MenuItemText onClick={this.logOut}>Log Out</MenuItemText>
                     </Menu>
-                    <input type="button" onClick={this.ToggleBurger} /> 
             </div>
         )
 
