@@ -67,7 +67,8 @@ class JobMap extends React.Component {
 			width: '70vw',
 			height: '70vh',
 			border: '2px solid #555555',
-			display: 'inline-block'
+			display: 'inline-block',
+			'grid-area' : 'one'
 
 		}
 
@@ -111,7 +112,7 @@ class JobMap extends React.Component {
 
 
 		return(
-				<Map 
+				<Map
 					ref = {this.MapRef}
 					google={this.props.google} 
 					style = {style}

@@ -1,11 +1,23 @@
-import React from 'react'
+import React from 'react';
 
+/**
+ * Styling imports
+ */
 import '../styles/PostWork.css'
-
 import styled from 'styled-components'
+
+//TODO: See if I made changes to the below shared Styled Components
+    //If so, extend them.
+//import {FullWidth, FullWidth2, LeftOverlay, RightOverlay, MainHeader, InnerPadding} from '../styles/sharedStyledComponents.js';
+
+/**
+ * Google Maps API
+ */
 import Autocomplete from 'react-google-autocomplete';
 
-
+/**
+ * Page-Level component
+ */
 class PostWork extends React.Component{
     constructor(props){
         super(props);

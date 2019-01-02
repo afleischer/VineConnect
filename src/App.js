@@ -24,22 +24,6 @@ import { NavLink, Switch, Route } from 'react-router-dom';
 import {NavStyler, NavOption, NavOptionText, LogoText} from './styles/NavStyler'
 
 
-
-
-
-/*
-To add back in as created:
-
-        <NavMenu /> 
-
-        <HomePage />
-        <PostWork />
-
-        <Footer /> 
-
-
-*/
-
 class App extends React.Component {
   constructor(props){
     super(props);

@@ -11,6 +11,7 @@ import {db} from '../firebase_config'
 
 
 import '../styles/index.css';
+import {BreakGrid} from '../styles/sharedStyledComponents'
 
 class FindWork extends React.Component{
 	constructor(props){
@@ -83,17 +84,22 @@ class FindWork extends React.Component{
 		var map_outer_style = {
 			display: 'inline-block'		
 		}
-	
-		
+
+		const GridAreaOne = {
+			"grid-area" : "one"
+		}
 
 
 		return(
 			<div className="find_work_header">
 				<h1 className='header_text'>Available Work</h1>
-					<JobMap Jobs={this.state.displayedJobs} userLocation = {this.state.userLocation} />
-					<JobList Jobs={this.state.displayedJobs} /> 
+				<BreakGrid >
+					<JobMap style={GridAreaOne} Jobs={this.state.displayedJobs} userLocation = {this.state.userLocation} />
+					<JobList Jobs={this.state.displayedJobs} />
 					<label>Show only jobs on map?</label>
 				<input type="checkbox" onClick={this.toggleViewLock} />
+				</BreakGrid>
+
 			</div>
 		);
 	}

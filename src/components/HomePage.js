@@ -2,8 +2,12 @@ import React from 'react'
 
 //import {FullWidth} from '../styles/NavStyler'
 
-import styled, { css } from 'styled-components'
-import classNames from 'classnames/bind';
+/**
+ * Styled components import
+ */
+import styled, { css } from 'styled-components';
+import {FullWidth, FullWidth2, LeftOverlay, RightOverlay, MainHeader, InnerPadding} from '../styles/sharedStyledComponents.js';
+
 import NavLink from "react-router-dom/es/NavLink";
 
 class HomePage extends React.Component{
@@ -11,85 +15,6 @@ class HomePage extends React.Component{
     render(){
 
 
-
-        const FullWidth = styled.div`
-        width: 100vw;
-        height: 500px;
-        background-image: url(${process.env.PUBLIC_URL + '/grapes_first.jpg'});
-        background-size: cover;
-        background-position: -18%;
-
-        `
-
-        const FullWidth2 = styled.div`
-        width: 100vw;
-        height: 500px;
-        background-image: url(${process.env.PUBLIC_URL + '/agriculture_clouds.jpg'});
-        background-size: cover;
-        background-position: -18%;
-        `
-
-        const LeftOverlay = styled.div`
-        background-color: rgba(105, 116, 119, 0.55);
-        color: white;
-        position: relative;
-        top: 15%;
-        width: 50%;
-        margin: auto;
-        padding: 2%;
-        transform: translateX(-23%);
-
-        @media screen and (max-width: 824px){
-            width: 100vw;
-            transform: translateX(0%);
-            padding:0;
-
-        }
-
-        @media screen and (min-width: 1640px){
-            padding: 1%
-        }
-        `
-
-        const RightOverlay = styled.div`
-        background-color: rgba(105, 116, 119, 0.55);
-        color: white;
-        position: relative;
-        top: 15%;
-        left: 29%;
-        width: 50%;
-        margin: auto;
-        padding: 2%;
-        transform: translateX(-23%);
-
-        @media screen and (max-width: 824px){
-            width: 100vw;
-            transform: translateX(0%);
-            padding:0;
-
-        }
-
-        @media screen and (min-width: 1640px){
-            padding: 1%
-        }
-        `
-
-        const MainHeader = styled.h2`
-        font-family: "EB Garamond";
-        margin-bottom: 0;
-        margin-top: 0;
-        font-weight: 400;
-        font-size: 42px;
-        `
-
-        const OverlayText = styled.p`
-        font-family: "Nobile";
-
-        `
-
-        const InnerPadding = styled.div`
-        padding: 4.2%;
-        `
 
         return(
             <div>

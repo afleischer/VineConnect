@@ -1,6 +1,6 @@
 import React from 'react'; 
 
-import { NavOptionLogo, NavOptionContainer, NavStyler, NavOption, NavOptionText} from '../styles/NavStyler'
+import { NavStyler, NavOption, NavOptionText} from '../styles/NavStyler'
 import styled from 'styled-components';
 import { NavLink} from 'react-router-dom';
 
@@ -57,36 +57,46 @@ class NavMenu extends React.Component{
 
 		const LogoText = styled.h1`
 		font-family: Nobile;
-		color: white;
+		color: #e2e2e2;
 		margin: 0;
 		transform: translateY(-46%);
-		background-color: ${state => (state.link_selected == "home") ? "rgba(45,45,45,0.98)" : (state.link_selected != "home") ? "grey" : "red"}
+		background-color: ${props => (props.LinkSelected == "home") ? "#585757" : (props.LinkSelected != "home") ? "rgba(45,45,45,0.98)" : "red"}
 	`;
+
 
 		const NavOptionTextFindWork = styled.div`
 		font-family: Arial;
 		color: white;
-		background-color: ${state => (state.link_selected == "find_work") ? "rgba(45,45,45,0.98)" : (state.link_selected != "find_work") ? "grey" : "red"}
+		background-color: ${props => (props.LinkSelected == "find_work") ? "#585757" : (props.LinkSelected != "find_work") ? "rgba(45,45,45,0.98)" : "red"}
 	`;
 	
 		const NavOptionTextPostWork = styled.div`
 		font-family: Arial;
 		color: white;
-		background-color: ${state => (state.link_selected == "post_work") ? "rgba(45,45,45,0.98)" : (state.link_selected != "post_work") ? "grey" : "red"}
+		background-color: ${props => (props.LinkSelected == "post_work") ? "#585757" : (props.LinkSelected != "post_work") ? "rgba(45,45,45,0.98)" : "red"}
 	`;
+
+		const NavLinkStyle = {
+			"color" : "inherit",
+			"text-decoration" : "none"
+		}
+
+		const LogoLinkStyle = {
+			"color" : "white",
+			"text-decoration" : "none"
+		}
+
 		return (
 
 			<NavStyler>
-				<NavOptionLogo>
 					<NavOptionText>
-						<LogoText><NavLink onClick={() => this.setSelected("home")} style={styles} to='/'>VineConnect</NavLink></LogoText>
+						<LogoText LinkSelected={this.state.link_selected}><NavLink style={LogoLinkStyle} onClick={() => this.setSelected("home")}  to='/'>VineConnect</NavLink></LogoText>
 					</NavOptionText>
-				</NavOptionLogo>
 				<NavOption>
-					<NavOptionText><NavLink onClick={() => this.setSelected("find_work")} to='/find_work'>Find Work</NavLink></NavOptionText>
+					<NavOptionTextFindWork LinkSelected={this.state.link_selected}><NavLink style={NavLinkStyle} onClick={() => this.setSelected("find_work")} to='/find_work'>Find Work</NavLink></NavOptionTextFindWork>
 				</NavOption>
 				<NavOption>
-					<NavOptionText><NavLink onClick={() => this.setSelected("post_work")} to='/post_work'>Post Work</NavLink></NavOptionText>
+					<NavOptionTextPostWork LinkSelected={this.state.link_selected}><NavLink style={NavLinkStyle} onClick={() => this.setSelected("post_work")} to='/post_work'>Post Work</NavLink></NavOptionTextPostWork>
 				</NavOption>
 				<Hamburger  ToggleBurger={this.toggleBurger} BurgerOpened={this.state.hamburger_open} UserData={this.props.UserData}/>
 			</NavStyler>
