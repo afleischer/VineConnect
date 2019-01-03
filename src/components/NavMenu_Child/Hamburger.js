@@ -2,7 +2,7 @@ import React from 'react'
 
 import styled, { css } from 'styled-components'
 
-import firebase from '../firebase_config'
+import firebase from '../../firebase_config'
 import { NavLink, Switch, Route } from 'react-router-dom';
 
 
@@ -13,7 +13,7 @@ const HamburgerSelector = (props) => {
     const TopStyle = {
         position: "absolute",
         right: "50px",
-        top: "20px"
+        top: "calc(3vh - 20px)"
     }
 
     const style = {

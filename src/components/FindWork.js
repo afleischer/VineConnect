@@ -25,7 +25,7 @@ class FindWork extends React.Component{
 
 		this.JobsRef = db.collection('jobs');
 
-		db.collection("jobs").get().then((querySnapshot) => {
+		db.collection("jobs").where("active", "==", true).get().then((querySnapshot) => {
 			var jobsArr = [];
 			querySnapshot.forEach(function(doc) {
 				// doc.data() is never undefined for query doc snapshots

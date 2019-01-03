@@ -4,7 +4,7 @@ import { NavStyler, NavOption, NavOptionText} from '../styles/NavStyler'
 import styled from 'styled-components';
 import { NavLink} from 'react-router-dom';
 
-import Hamburger from './Hamburger'
+import Hamburger from './NavMenu_Child/Hamburger'
 
 
 class NavMenu extends React.Component{

@@ -60,13 +60,27 @@ class JobList extends React.Component{
     				margin: '0 7% 0 11%'
 				}
 
+				/***
+				 * Check to see if this is the PostWork JobList (that will only show
+				 * the jobs the user Has entered
+				 */
+
+				var deleteJobButton;
+
+				try{
+					if(this.props.ManageFlag){
+						deleteJobButton = (<input onClick ={this.props.DeleteJob} />)
+					}
+
+				}catch{}
+
 				returnArray.push(<div style={ItemStyle} className="JobListItem">
 					<h1>Job: {job.job_name}</h1>
 					<h3>Posted by: {job.job_poster} </h3>
 					<h3>Start date: {formattedTime}</h3>
 					
 					<p>{job.description}</p>
-					
+					{deleteJobButton}
 				</div>)
 			}
 		}

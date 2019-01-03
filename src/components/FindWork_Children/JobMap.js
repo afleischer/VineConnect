@@ -10,9 +10,34 @@ import JobList from './JobList';
  * Google Maps API modules
  */
 
-import {google, Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {google, Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react';
 
 import {MapStyle} from '../../styles/NavStyler'
+
+/**
+ * Rolling my own InfoWindow
+ */
+/*
+class InfoWindow extends React.Component{
+	componentDidUpdate(prevProps, prevState){
+		if(this.props.map !== prevProps.map){
+			//...
+		}
+
+		if(this.props.children !== prevProps.children){
+			this.updateContent();
+		}
+	}
+	updateContent(){
+		const content = this.renderChildren();
+		this.infowindow
+			.setContent(content);
+	}
+
+	renderChildren(){}
+}
+*/
+
 
 class JobMap extends React.Component {
 	constructor(props){
@@ -21,7 +46,6 @@ class JobMap extends React.Component {
 		this.MapRef = React.createRef();
 		this.renderMarkers = this.renderMarkers.bind(this);
 		this.onMarkerClick = this.onMarkerClick.bind(this);
-		this.markerGenerate = this.markerGenerate.bind(this);
 	}
 
 
@@ -42,22 +66,25 @@ class JobMap extends React.Component {
 		*/
 	}
 
-	onMarkerClick(e){
+	onMarkerClick(e, hide, counter, test1){
 		/**
 		 * Open the infoWindow
 		 * (InfoWindow has built-in closure method)
 		 */
+		let uId = e.children.key;
+		let InfoWindowStateIdentifier = "showingInfoWindow_"+uId;
+		var InfoWindowStateValue;
+		try{
+			InfoWindowStateValue= this.state.InfoWindowStateIdentifier
+		}catch{}
 
-
-
-	}
-
-	markerGenerate(){
-		/***
-		 * Set the selected marker'
-		 *
-		 */
-
+		if(InfoWindowStateValue){
+			this.setState(prevState => ({
+				[InfoWindowStateIdentifier]: !prevState.InfoWindowStateIdentifier
+			})	)
+		}
+		//e.children.props.visible = true;
+		//set the state of its window to "displayed"
 
 	}
 
@@ -95,17 +122,52 @@ class JobMap extends React.Component {
 		var allJobs = this.props.Jobs;
 		if(allJobs){
 			//iterate through...
+
+			const handleMarkerTap = (marker) => {
+				//use the .open function on the InfoWindow
+				let infoWindow = marker.children;
+				infoWindow.open();
+			}
+
+			/** Old Map Marker method*/
+
+			var i = 0;
+
 			for(let job of allJobs){
-				MapMarkers.push(<Marker  name={job.job_description}
-										  position={{lat: job.job_location._lat, lng: job.job_location._long}}
-										 onClick={(e) => this.onMarkerClick(e)}
+
+				let InfoWindowStateIdentifier = "showingInfoWindow_"+i;
+
+				var visibleState = () => {
+					if(!this.state[InfoWindowStateIdentifier]){
+						return false;
+					}
+					else{
+						return this.state[InfoWindowStateIdentifier];
+					}
+				}
+
+				MapMarkers.push(
+					<Marker  name={job.job_description}
+					 	  position={{lat: job.job_location._lat, lng: job.job_location._long}}
+						  onClick={(e, props, addGeo) => this.onMarkerClick(e, props, addGeo)}
 				>
-					<InfoWindow visible={false} content={job.job_description}  style={InfoStyle}>
-						<h1>Test test test</h1>
+					<InfoWindow
+						marker={job.job_description}
+						onCloseClick={(e) => handleMarkerTap(e)}
+						visible={visibleState}
+						key={i}
+						content={job.job_description}
+						style={InfoStyle}
+						position={{lat: job.job_location._lat, lng: job.job_location._long}}
+
+					>
+						<div>
+							<h1>Test test test</h1>
+						</div>
 					</InfoWindow>
 				</Marker>)
 
-
+				i++;
 			}
 
 		}
@@ -129,8 +191,6 @@ class JobMap extends React.Component {
 					>
 
 					{MapMarkers}
-					{InfoWindows}
-
 				</Map>
 		)
 	}

@@ -2,9 +2,9 @@ import React from 'react'
 import HomePage from './components/HomePage'
 import FindWork from './components/FindWork'
 import PostWork from './components/PostWork'
-import Login from './components/Login'
+import Login from './components/Profile_Management/Login'
 import Signup from './components/Signup'
-import Profile from './components/Profile'
+import Profile from './components/Profile_Management/Profile'
 
 import { NavLink, Switch, Route } from 'react-router-dom';
 

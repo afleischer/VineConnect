@@ -13,7 +13,7 @@ import PostWork from './components/PostWork'
 import ManageWork from './components/ManageWork'
 import Footer from './components/Footer'
 import Routes from './Routes'
-import Hamburger from './components/Hamburger'
+import Hamburger from './components/NavMenu_Child/Hamburger'
 
 import firebase, {db} from './firebase_config'
 
@@ -29,6 +29,7 @@ class App extends React.Component {
     super(props);
 
     this.LogOut = this.LogOut.bind(this);
+    this.deleteJob = this.deleteJob.bind(this);
   }
 
   state ={
@@ -68,7 +69,6 @@ class App extends React.Component {
                 .get()
                 .then(querySnapshot => {
                   let docArr = ["foo"];
-                  console.log("querySnapshot is:" + querySnapshot);
                   querySnapshot.forEach(doc => {
                     docArr.push(doc.data());
                   });
@@ -89,6 +89,12 @@ class App extends React.Component {
       })
   }
 
+    deleteJob(){
+        //in Firebase, set "active" on job to N
+
+        //TODO: Above, modify the jobs to be pulled to not include any with "active" as N
+    }
+
   render() {
 
     var user = firebase.auth().currentUser;
@@ -100,7 +106,7 @@ class App extends React.Component {
       <div className="App">
 
         <NavMenu UserData={this.state.user_docs} />
-        <Routes UserData={this.state.user_docs} Session={this.state.session} LogOutFn={this.LogOut} />
+        <Routes UserData={this.state.user_docs} Session={this.state.session} LogOutFn={this.LogOut} DeleteJob={this.deleteJob}/>
         <Footer />
 
       </div>

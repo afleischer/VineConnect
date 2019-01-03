@@ -1,5 +1,7 @@
 import React from 'react';
 
+import JobList from './FindWork_Children/JobList'
+
 /**
  * Styling imports
  */
@@ -14,6 +16,7 @@ import styled from 'styled-components'
  * Google Maps API
  */
 import Autocomplete from 'react-google-autocomplete';
+import {db} from "../firebase_config";
 
 /**
  * Page-Level component
@@ -28,7 +31,25 @@ class PostWork extends React.Component{
         this.toggleEndDate = this.toggleEndDate.bind(this);
         this.updateAddress = this.updateAddress.bind(this);
         this.loginCheck = this.loginCheck.bind(this);
+        this.deleteJob = this.deleteJob.bind(this);
 
+        this.JobsRef = db.collection('jobs');
+
+        /***
+         * TODO: For PostWork, get only the jobs that the user
+         * has posted themselves
+         */
+        db.collection("jobs").where("active", "==", true).get().then((querySnapshot) => {
+            var jobsArr = [];
+            querySnapshot.forEach(function(doc) {
+                // doc.data() is never undefined for query doc snapshots
+                jobsArr.push(doc.data())
+            });
+
+            this.setState({
+                displayedJobs : jobsArr
+            })
+        });
     }
 
     updateJob(e){
@@ -62,6 +83,15 @@ class PostWork extends React.Component{
     loginCheck(e){
 
     }
+
+    /**
+     * TODO: build this function below
+     */
+
+    deleteJob(){
+
+    }
+
     render(){
 
         const FullWidth = styled.div`
@@ -139,6 +169,18 @@ class PostWork extends React.Component{
         padding: 20px 15%;
         `
 
+        const JobAddDiv = {
+            "height": "calc(100vh - 500px)",
+            "width" : "50%"
+        }
+
+        const MyJobList = {
+            "width" : "50%",
+            "float" : "right",
+            "height": "calc(100vh - 500px)",
+
+        }
+
         /***
         * Conditional section that 
         */
@@ -148,6 +190,14 @@ class PostWork extends React.Component{
         if(this.props.Session){
             loginCheck = (
                 <div>
+
+                <div style={MyJobList}>
+                    <h2>Work You've Posted</h2>
+                    <JobList Jobs={this.props.displayedJobs} DeleteJob={this.props.deleteJob}/>
+
+                </div>
+
+                <div style={JobAddDiv}>
                     <h2> Job Post form</h2>
                     <p>
                         <label>Describe the job:</label>
@@ -175,10 +225,12 @@ class PostWork extends React.Component{
                             onPlaceSelected={(place) => console.log("place is:"+place)}
                         />
                     </p>
-                    
-                
 
                     <input type="submit"></input>
+
+                </div>
+
+
 
                 </div>
                 )
@@ -200,12 +252,11 @@ class PostWork extends React.Component{
                   <RightOverlay> 
                       <InnerPadding>
                       <MainHeader>Need help to find a job?</MainHeader>
-                        <h4>Post it here and others can see where it is!</h4>
+                        <p>Use the below form to post it so that others can see where it is!</p>
                         </InnerPadding>
                     </RightOverlay>  
 
                 </FullWidth>
-
 
                 {loginCheck}
 
