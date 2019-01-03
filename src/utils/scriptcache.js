@@ -13,7 +13,6 @@ export const ScriptCache = (function(global) {
             stored.error ? cb(stored.error) : cb(null, stored)
           })
         } else {
-          // TODO:
         }
       }
     }

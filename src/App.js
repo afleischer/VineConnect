@@ -93,6 +93,11 @@ class App extends React.Component {
         //in Firebase, set "active" on job to N
 
         //TODO: Above, modify the jobs to be pulled to not include any with "active" as N
+        let toChangeUID = this.state.user_docs[1].uid
+
+        //Set the business id of what is passed on to false
+            //???What will the id passed be? What will it look like?
+
     }
 
   render() {

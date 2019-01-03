@@ -8,7 +8,6 @@ import JobList from './FindWork_Children/JobList'
 import '../styles/PostWork.css'
 import styled from 'styled-components'
 
-//TODO: See if I made changes to the below shared Styled Components
     //If so, extend them.
 //import {FullWidth, FullWidth2, LeftOverlay, RightOverlay, MainHeader, InnerPadding} from '../styles/sharedStyledComponents.js';
 
@@ -40,11 +39,16 @@ class PostWork extends React.Component{
          * has posted themselves
          */
 
-        this.user= this.props.UserData
-
+        try{
+            this.user= this.props.UserData[1].uid
+        }
+        catch{
+            this.user=null;
+        }
         if(this.user){
 
             db.collection("jobs").where("active", "==", true)
+                .where("job_poster", "==", this.user)
                 .get().then((querySnapshot) => {
                 var jobsArr = [];
                 querySnapshot.forEach(function(doc) {
