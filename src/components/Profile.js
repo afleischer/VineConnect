@@ -1,18 +1,10 @@
 import React from 'react'
 
-import firebase, {db} from '../firebase_config'
-
-
 class Profile extends React.Component{
     constructor(props){
         super(props);
 
         this.fetchProfile = this.fetchProfile.bind(this);
-
-        console.log("props received in Profile is"+props);
-
-
-
     }
 
 
@@ -40,60 +32,7 @@ class UserProfile extends React.Component {
         /**
          * Listener for Profile data
          */
-
-        /*
-        firebase.auth().onAuthStateChanged(userdata => {
-            var fb_ref = db.collection('users');
-            if (props.user.uid != null) {
-                fb_ref.where("uid", "==", props.user.uid)
-                    .get()
-                    .then(querySnapshot => {
-                        let docArr = ["foo"];
-                        console.log("querySnapshot is:" + querySnapshot);
-                        querySnapshot.forEach(doc => {
-                            docArr.push(doc.data());
-                        });
-                        this.setState({
-                            user_docs: docArr
-                        })
-                    })
-            }
-
-        })
-        */
     }
-
-    /*
-
-var user = props.user;
-
-var fb_ref = db.collection('users');
-
-try{
-    var match = this.state.user_docs;
-}catch{}
-
-if(user){
-
-    fb_ref.where("uid", "==", user.uid)
-        .get()
-        .then(querySnapshot => {
-            let docArr= ["foo"];
-            console.log("querySnapshot is:"+querySnapshot);
-            querySnapshot.forEach(doc => {
-                docArr.push(doc.data());
-            });
-            this.setState({
-                user_docs: docArr
-            })
-        })
-
-    console.log("match is:"+match);
-
-    //for each match
-
-}
-*/
 
     render() {
 
@@ -131,7 +70,7 @@ if(user){
 
             </div>)
         }catch(error){
-            var returnVal = (<div> Nope nothing</div>);
+            var returnVal = (<div>Please <a href="/login">log in</a> to view your profile</div>);
         }
 
         return (

@@ -8,6 +8,14 @@
 
 # production
 /build
+/%RESOURCE_DIR%
+
+# firebase
+/functions
+/.firebase
+.firebaserc
+firebase.json
+storage.rules
 
 # misc
 .DS_Store

@@ -13,7 +13,6 @@ class Login extends React.Component{
 		this.updatePass = this.updatePass.bind(this);
 		this.populateError = this.populateError.bind(this);
 		this.validateUser = this.validateUser.bind(this);
-		this.LogOut = this.LogOut.bind(this);
 
 		/**
 		 * 
@@ -91,19 +90,36 @@ class Login extends React.Component{
 
 	}
 
-	LogOut(){
-		firebase.auth().signOut().then(function() {
-			
-		  }).catch(function(error) {
-			// An error happened.
-		  });
 
-	}
 
 
 	render(){
 
+		/**
+		 * Check if prop is
+		 */
 
+		var propCheck = this.props.UserData
+		var loginCheck;
+			if(propCheck){
+				loginCheck= (<div>You are logged in</div>);
+			}
+
+			else{
+				loginCheck=(
+					<div>
+					<h2>Don't have an account?<NavLink to="Signup"> Sign up.</NavLink></h2>
+
+				<label for = "uname">username:</label>
+			<input onChange = {(e) => this.updateUID(e)} name="uname"></input>
+				<label for = "pass">password:</label>
+				<input onChange = {(e) => this.updatePass(e)} namse = "pass" type = "password"></input>
+				{this.populateError()}
+				<button onClick={this.validateUser} type="button">Submit</button>
+
+				</div>
+			)
+			}
 		/**
 		 * Determine if any error was previously logged to localStorage
 		 */
@@ -119,16 +135,11 @@ class Login extends React.Component{
 		return(
 
 			<div>
-			<h2>Don't have an account?<NavLink to="Signup"> Sign up.</NavLink></h2>
 
-				<label for = "uname">username:</label>
-					<input onChange = {(e) => this.updateUID(e)} name="uname"></input>
-				<label for = "pass">password:</label>
-					<input onChange = {(e) => this.updatePass(e)} namse = "pass" type = "password"></input>
-				{this.populateError()}
-				<button onClick={this.validateUser} type="button">Submit</button>
+					{loginCheck}
+
 				<div onClick={this.LogOut}>
-					<h2>Log Out</h2>
+					<a onClick={this.props.LogOutFn}>Log Out</a>
 				</div>
 			</div>
 		);

@@ -28,15 +28,29 @@ class App extends React.Component {
   constructor(props){
     super(props);
 
+    this.LogOut = this.LogOut.bind(this);
   }
 
   state ={
     test: "foo"
   }
 
-  /**
-   * Detect user Auth state change at app level
-   */
+
+  LogOut(){
+      firebase.auth().signOut().then(function() {
+            this.setState({
+                user_docs: null,
+                session : null
+            })
+      }).catch(function(error) {
+          // An error happened.
+      });
+
+  }
+
+    /**
+     * Detect user Auth state change at app level
+     */
   componentDidMount() {
 
       firebase.auth().onAuthStateChanged(user => {
@@ -68,7 +82,8 @@ class App extends React.Component {
           console.log("user is not logged in!")
           theUser = null;
           this.setState({
-            session: theUser
+            session: theUser,
+              user_docs: null
           });
         }
       })
@@ -85,7 +100,7 @@ class App extends React.Component {
       <div className="App">
 
         <NavMenu UserData={this.state.user_docs} />
-        <Routes UserData={this.state.user_docs} Session={this.state.session} />
+        <Routes UserData={this.state.user_docs} Session={this.state.session} LogOutFn={this.LogOut} />
         <Footer />
 
       </div>
