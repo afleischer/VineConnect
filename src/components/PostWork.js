@@ -39,17 +39,30 @@ class PostWork extends React.Component{
          * TODO: For PostWork, get only the jobs that the user
          * has posted themselves
          */
-        db.collection("jobs").where("active", "==", true).get().then((querySnapshot) => {
-            var jobsArr = [];
-            querySnapshot.forEach(function(doc) {
-                // doc.data() is never undefined for query doc snapshots
-                jobsArr.push(doc.data())
+
+        this.user= this.props.UserData
+
+        if(this.user){
+
+            db.collection("jobs").where("active", "==", true)
+                .get().then((querySnapshot) => {
+                var jobsArr = [];
+                querySnapshot.forEach(function(doc) {
+                    // doc.data() is never undefined for query doc snapshots
+                    jobsArr.push(doc.data())
+                });
+
+                this.setState({
+                    displayedJobs : jobsArr
+                })
             });
 
-            this.setState({
-                displayedJobs : jobsArr
-            })
-        });
+        }
+
+
+
+
+
     }
 
     updateJob(e){
