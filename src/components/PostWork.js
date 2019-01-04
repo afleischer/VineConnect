@@ -17,6 +17,9 @@ import styled from 'styled-components'
 import Autocomplete from 'react-google-autocomplete';
 import {db} from "../firebase_config";
 
+
+//import {DateTime} from 'react-datetime'
+
 /**
  * Page-Level component
  */
@@ -31,13 +34,19 @@ class PostWork extends React.Component{
         this.updateAddress = this.updateAddress.bind(this);
         this.loginCheck = this.loginCheck.bind(this);
         this.deleteJob = this.deleteJob.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
 
         this.JobsRef = db.collection('jobs');
+
+        this.errorMessage = null;
 
         /***
          * TODO: For PostWork, get only the jobs that the user
          * has posted themselves
          */
+/*
+
+REFACTORING TO componentDidMount
 
         try{
             this.user= this.props.UserData[1].uid
@@ -62,12 +71,15 @@ class PostWork extends React.Component{
             });
 
         }
-
-
-
-
+    
+*/    
 
     }
+
+    state={
+        form_error_message : "no_error"
+    }
+
 
     updateJob(e){
         this.setState({
@@ -94,11 +106,72 @@ class PostWork extends React.Component{
     }
     updateAddress(e){
         //validate the address with google autocomplete
-
+        this.setState({
+            job_address : e.target.value
+        })
 
     }
     loginCheck(e){
 
+    }
+
+
+    onSubmit(){
+        //if the job description, begin, end/checkbox, or location are missing, throw error
+
+        var missingStates=[];
+
+        if(!this.state.job_name){
+            //Create a dialog that 
+            missingStates.push("Job Description");
+        }
+
+        else if(!this.state.job_start){
+            missingStates.push("Start Date");
+
+        }
+        else if(!this.state.job_end && !this.state.job_endless){
+            missingStates.push("End Date");
+
+        }
+        else if(!this.state.job_name){
+            missingStates.push("Job Name");    
+        }
+        else if(!this.state.job_address){
+            missingStates.push("Address");
+        }
+
+        if (missingStates.length != 0){
+            var combinedMessage ="";
+            for(let i = 0; i < missingStates.length; i++){
+                combinedMessage.concat(missingStates[i]);
+            }
+            var errorMessage = "You need to fill out"+combinedMessage;
+            this.setState({form_error_message: errorMessage})
+        }
+        else{
+            this.setState({form_error_message: "no_error"})
+
+            //TODO: Use Google to get the lat+lng of the autocompleted address to get the location
+                //Also TODO: Fix Google's Autocomplete
+
+            //now submit! 
+
+            //WILL ADD job_location function
+                //TODO: change 
+            db.collection("jobs").add({
+                active: true,
+                job_description: this.state.job_description,
+                job_name: this.state.job_name,
+                job_start: this.state.job_start,
+                job_end: this.state.job_end,
+                job_poster: this.props.UserData[1].user_name,
+                job_poster_id: this.props.UserData[1].uid,
+                job_address: this.state.job_address
+
+
+            })
+        }
     }
 
     /**
@@ -108,6 +181,49 @@ class PostWork extends React.Component{
     deleteJob(){
 
     }
+
+    /**
+    *
+    
+    componentDidMount(){
+        if(this.props.Session != undefined){
+                db.collection("jobs").where("active", "==", true)
+                    .where("job_poster", "==", this.user)
+                    .get().then((querySnapshot) => {
+                    var jobsArr = [];
+                    querySnapshot.forEach(function(doc) {
+                        // doc.data() is never undefined for query doc snapshots
+                        jobsArr.push(doc.data())
+                    });
+        
+                    this.setState({
+                        displayedJobs : jobsArr
+                    })
+                });
+        }
+
+    }
+
+    UNSAFE_componentWillReceiveProps(nextProps){
+      //if the session data chances...
+      if(nextProps.UserData!==this.props.UserData){
+        const user = nextProps.UserData[1].uid;
+        db.collection("jobs").where("active", "==", true)
+            .where("job_poster", "==", user)
+            .get().then((querySnapshot) => {
+            var jobsArr = [];
+            querySnapshot.forEach(function(doc) {
+                // doc.data() is never undefined for query doc snapshots
+                jobsArr.push(doc.data())
+            });
+
+            this.setState({
+                displayedJobs : jobsArr
+            })
+        });
+      }
+    }
+    */
 
     render(){
 
@@ -198,19 +314,44 @@ class PostWork extends React.Component{
 
         }
 
+
         /***
         * Conditional section that 
         */
 
         let loginCheck = null;
 
+
+        
+
         if(this.props.Session){
+
+                      /**
+            *Only pull in the Job list if the user is logged in
+            */
+            var JobCheck;
+            try{
+                var Jobs= this.props.JobsList;
+                JobCheck = (<JobList Jobs={Jobs} DeleteJob={this.props.deleteJob}/>)
+            }
+            catch{
+                JobCheck = (<div> No Jobs to show.  Make sure you're logged in and have posted jobs before.</div>);
+            }
+
+
+            var errorMessage = null;
+            if(this.state.form_error_message != "no_error"){
+                errorMessage = (<div>{this.state.form_error_message}</div>)
+            }
+
+
             loginCheck = (
                 <div>
 
                 <div style={MyJobList}>
                     <h2>Work You've Posted</h2>
-                    <JobList Jobs={this.props.displayedJobs} DeleteJob={this.props.deleteJob}/>
+                    {JobCheck}
+                    
 
                 </div>
 
@@ -222,12 +363,12 @@ class PostWork extends React.Component{
                     </p>
                     <p>
                         <label>When does the job begin?</label>
-                    <input type="datetime-local" onChange={(e) => this.updateJobStartDate(e)} type="text"></input>
+                    <input type="datetime" onChange={(e) => this.updateJobStartDate(e)} type="text"></input>
                     </p>
 
                     <p>
 <label>When does the job end?</label>
-                    <input type="datetime-local" onChange={(e) => this.updateJobEndDate(e)} type="text"></input>
+                    <input type="datetime" onChange={(e) => this.updateJobEndDate(e)} type="text"></input>
                     </p>
 
                     <p>
@@ -243,7 +384,9 @@ class PostWork extends React.Component{
                         />
                     </p>
 
-                    <input type="submit"></input>
+                    <input type="submit" onClick={this.onSubmit}></input>
+
+                    {errorMessage}
 
                 </div>
 

@@ -76,6 +76,27 @@ class App extends React.Component {
                     session: theUser,
                     user_docs: docArr
                   })
+
+        //fetch jobs that the user has entered
+        db.collection("jobs").where("active", "==", true)
+                .where("job_poster_id", "==", user.uid)
+                .get().then((querySnapshot) => {
+                var jobsArr = [];
+                querySnapshot.forEach(function(doc) {
+                    // doc.data() is never undefined for query doc snapshots
+                    jobsArr.push(doc.data())
+                });
+
+                this.setState({
+                    displayedJobs : jobsArr
+                })
+            });
+
+
+
+
+
+
                 })
         } else {
           // No user is signed in.
@@ -87,6 +108,11 @@ class App extends React.Component {
           });
         }
       })
+
+
+
+
+
   }
 
     deleteJob(){
@@ -100,7 +126,11 @@ class App extends React.Component {
 
     }
 
+
+
   render() {
+
+
 
     var user = firebase.auth().currentUser;
     
@@ -111,7 +141,9 @@ class App extends React.Component {
       <div className="App">
 
         <NavMenu UserData={this.state.user_docs} />
-        <Routes UserData={this.state.user_docs} Session={this.state.session} LogOutFn={this.LogOut} DeleteJob={this.deleteJob}/>
+        <Routes UserData={this.state.user_docs} Session={this.state.session} LogOutFn={this.LogOut} DeleteJob={this.deleteJob}
+        JobsList={this.state.displayedJobs}
+        />
         <Footer />
 
       </div>
