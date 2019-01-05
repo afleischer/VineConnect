@@ -48,6 +48,11 @@ class JobMap extends React.Component {
 		this.onMarkerClick = this.onMarkerClick.bind(this);
 	}
 
+	state = {
+		showingInfoWindow: false, //Hides/shows the infowindow
+		activeMarker : {}, //shows the active marker upon click
+		selectedPlace : {} //shows the infowindow to the selected place upon a marker
+	}
 
 	renderMarkers(){
 		//for every job in this.props.Jobs
@@ -66,11 +71,19 @@ class JobMap extends React.Component {
 		*/
 	}
 
-	onMarkerClick(e, hide, counter, test1){
+	onMarkerClick(props, marker, e){
 		/**
 		 * Open the infoWindow
 		 * (InfoWindow has built-in closure method)
 		 */
+
+		this.setState({
+			selectedPlace : props,
+			activeMarker: marker,
+			showingInfoWindow: true
+		})
+
+		/*
 		let uId = e.children.key;
 		let InfoWindowStateIdentifier = "showingInfoWindow_"+uId;
 		var InfoWindowStateValue;
@@ -83,9 +96,19 @@ class JobMap extends React.Component {
 				[InfoWindowStateIdentifier]: !prevState.InfoWindowStateIdentifier
 			})	)
 		}
+		*/
 		//e.children.props.visible = true;
 		//set the state of its window to "displayed"
 
+	}
+
+	onClose = props => {
+		if(this.state.showingInfoWindow) {
+			this.setState({
+				showingInfoWindow: false,
+				activeMarker: null
+			})
+		}
 	}
 
 	render(){
@@ -116,7 +139,6 @@ class JobMap extends React.Component {
 		 */
 
 		var MapMarkers = [];
-		var InfoWindows = [];
 
 		//for every job
 		var allJobs = this.props.Jobs;
@@ -149,23 +171,10 @@ class JobMap extends React.Component {
 				MapMarkers.push(
 					<Marker  name={job.job_description}
 					 	  position={{lat: job.job_location._lat, lng: job.job_location._long}}
-						  onClick={(e, props, addGeo) => this.onMarkerClick(e, props, addGeo)}
-				>
-					<InfoWindow
-						marker={job.job_description}
-						onCloseClick={(e) => handleMarkerTap(e)}
-						visible={visibleState}
-						key={i}
-						content={job.job_description}
-						style={InfoStyle}
-						position={{lat: job.job_location._lat, lng: job.job_location._long}}
-
-					>
-						<div>
-							<h1>Test test test</h1>
-						</div>
-					</InfoWindow>
-				</Marker>)
+						  onClick={this.onMarkerClick}
+				/>)
+						MapMarkers.push(
+				)
 
 				i++;
 			}
@@ -191,6 +200,17 @@ class JobMap extends React.Component {
 					>
 
 					{MapMarkers}
+					<InfoWindow
+						marker={this.state.activeMarker}
+						onClose={this.onClose}
+						visible={this.state.showingInfoWindow}
+
+
+					>
+						<div>
+							<h1>Place is:{this.state.selectedPlace.name}</h1>
+						</div>
+					</InfoWindow>
 				</Map>
 		)
 	}

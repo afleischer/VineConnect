@@ -15,6 +15,8 @@ import styled from 'styled-components'
  * Google Maps API
  */
 import Autocomplete from 'react-google-autocomplete';
+import {google} from '../utils/GoogleApi'
+//import {google} from 'google-maps-react';
 import {db} from "../firebase_config";
 
 
@@ -41,7 +43,7 @@ class PostWork extends React.Component{
         this.errorMessage = null;
 
         /***
-         * TODO: For PostWork, get only the jobs that the user
+         * TODO: (VERIFY LATER) For PostWork, get only the jobs that the user
          * has posted themselves
          */
 /*
@@ -126,39 +128,56 @@ REFACTORING TO componentDidMount
             missingStates.push("Job Description");
         }
 
-        else if(!this.state.job_start){
+        if(!this.state.job_start){
             missingStates.push("Start Date");
 
         }
-        else if(!this.state.job_end && !this.state.job_endless){
+        if(!this.state.job_end && !this.state.job_endless){
             missingStates.push("End Date");
 
         }
-        else if(!this.state.job_name){
+        if(!this.state.job_name){
             missingStates.push("Job Name");    
         }
-        else if(!this.state.job_address){
+        if(!this.state.job_address){
             missingStates.push("Address");
         }
 
         if (missingStates.length != 0){
             var combinedMessage ="";
             for(let i = 0; i < missingStates.length; i++){
-                combinedMessage.concat(missingStates[i]);
+                combinedMessage =combinedMessage+missingStates[i]+", ";
             }
-            var errorMessage = "You need to fill out"+combinedMessage;
+            var errorMessage = "Required Fields "+combinedMessage+" not entered";
             this.setState({form_error_message: errorMessage})
         }
-        else{
+        if (missingStates.length == 0){
             this.setState({form_error_message: "no_error"})
 
-            //TODO: Use Google to get the lat+lng of the autocompleted address to get the location
+            /**
+             * Function to derive latitude and longitude from address
+             */
+            /*
+            const JobLocation = () =>{
+                var geocoder = new google.maps.Geocoder();
+                var address = this.state.job_address;
+
+                var JobLocationReturn;
+
+                geocoder.geocode({'address': address}, function(results, status){
+                    if(status == google.maps.GeocoderStatus.OK) {
+                        var latitude = results[0].geometry.location.lat();
+                        var longitude = results[0].geometry.location.lng();
+                        JobLocationReturn = [latitude, longitude]
+                        //TODO: parse and upload this to Firebase now!
+                    }
+                })
+                return JobLocationReturn
+            }
+            */
                 //Also TODO: Fix Google's Autocomplete
 
-            //now submit! 
-
-            //WILL ADD job_location function
-                //TODO: change 
+        //add in after troubleshooting:                  job_location: JobLocation()
             db.collection("jobs").add({
                 active: true,
                 job_description: this.state.job_description,
@@ -168,7 +187,6 @@ REFACTORING TO componentDidMount
                 job_poster: this.props.UserData[1].user_name,
                 job_poster_id: this.props.UserData[1].uid,
                 job_address: this.state.job_address
-
 
             })
         }
@@ -338,10 +356,14 @@ REFACTORING TO componentDidMount
                 JobCheck = (<div> No Jobs to show.  Make sure you're logged in and have posted jobs before.</div>);
             }
 
+            var errorStyle = {
+                    "color" : "red"
+
+            }
 
             var errorMessage = null;
             if(this.state.form_error_message != "no_error"){
-                errorMessage = (<div>{this.state.form_error_message}</div>)
+                errorMessage = (<div style={errorStyle}>{this.state.form_error_message}</div>)
             }
 
 
