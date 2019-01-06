@@ -22,6 +22,10 @@ import {db} from "../firebase_config";
 
 //import {DateTime} from 'react-datetime'
 
+
+const uuidv1 = require('uuid/v1');
+
+
 /**
  * Page-Level component
  */
@@ -83,9 +87,15 @@ REFACTORING TO componentDidMount
     }
 
 
-    updateJob(e){
+    updateName = (e) => {
         this.setState({
             job_name : e.target.value
+        })
+    }
+
+    updateJob(e){
+        this.setState({
+            job_description : e.target.value
         })        
     }
 
@@ -177,20 +187,44 @@ REFACTORING TO componentDidMount
             */
                 //Also TODO: Fix Google's Autocomplete
 
-        //add in after troubleshooting:                  job_location: JobLocation()
-            db.collection("jobs").add({
-                active: true,
-                job_description: this.state.job_description,
-                job_name: this.state.job_name,
-                job_start: this.state.job_start,
-                job_end: this.state.job_end,
-                job_poster: this.props.UserData[1].user_name,
-                job_poster_id: this.props.UserData[1].uid,
-                job_address: this.state.job_address
 
-            })
+            //TODO: Add uid generator
+
+        //add in after troubleshooting:                  job_location: JobLocation()
+           let addJob = async () => {
+                let db_ref = db.collection("jobs");
+
+               await db_ref.add({
+                   job_uuid: uuidv1(),
+                   active: true,
+                   job_description: this.state.job_description,
+                   job_name: this.state.job_name,
+                   job_start: this.state.job_start,
+                   job_end: this.state.job_end,
+                   job_poster: this.props.UserData[1].user_name,
+                   job_poster_id: this.props.UserData[1].uid,
+                   job_address: this.state.job_address
+               })
+
+
+               /**
+                * Update the state to reflect a successful update
+                */
+               this.setState({
+                   form_success_message : "Your job has been posted!"
+               })
+               setTimeout( () => {
+                   this.setState({
+                       form_success_message : "no_success"
+                   })
+               }, 2000);
+           }
+
+           addJob()
+
+           }
+
         }
-    }
 
     /**
      * TODO: build this function below
@@ -361,11 +395,19 @@ REFACTORING TO componentDidMount
 
             }
 
+            var successStyle = {
+                    "color" : "green"
+            }
+
             var errorMessage = null;
             if(this.state.form_error_message != "no_error"){
                 errorMessage = (<div style={errorStyle}>{this.state.form_error_message}</div>)
             }
 
+            var successMessage = null;
+            if (this.state.form_success_message != "no_success"){
+                successMessage = (<div style={successStyle}>{this.state.form_success_message}</div>)
+            }
 
             loginCheck = (
                 <div>
@@ -379,6 +421,11 @@ REFACTORING TO componentDidMount
 
                 <div style={JobAddDiv}>
                     <h2> Job Post form</h2>
+
+                    <p>
+                        <label>What's the name of the job?</label>
+                        <input onChange={(e) => this.updateName(e)}></input>
+                    </p>
                     <p>
                         <label>Describe the job:</label>
                         <input onChange={(e) => this.updateJob(e)} type="text"></input>
@@ -409,7 +456,7 @@ REFACTORING TO componentDidMount
                     <input type="submit" onClick={this.onSubmit}></input>
 
                     {errorMessage}
-
+                    {successMessage}
                 </div>
 
 

@@ -12,7 +12,13 @@ import JobList from './JobList';
 
 import {google, Map, Marker, InfoWindow, GoogleApiWrapper} from 'google-maps-react';
 
+
+/***
+ * Styling imports
+ */
+
 import {MapStyle} from '../../styles/NavStyler'
+import {thin} from '../../styles/sharedStyleConsts'
 
 /**
  * Rolling my own InfoWindow
@@ -169,8 +175,11 @@ class JobMap extends React.Component {
 				}
 
 				MapMarkers.push(
-					<Marker  name={job.job_description}
+					<Marker  name={job.job_name}
+							 description={job.job_description}
 					 	  position={{lat: job.job_location._lat, lng: job.job_location._long}}
+							 start_date={job.job_start}
+							 poster={job.job_poster}
 						  onClick={this.onMarkerClick}
 				/>)
 						MapMarkers.push(
@@ -208,7 +217,10 @@ class JobMap extends React.Component {
 
 					>
 						<div>
-							<h1>Place is:{this.state.selectedPlace.name}</h1>
+							<h1 style={thin}>Job: {this.state.selectedPlace.name}</h1>
+							<h2>Description: {this.state.selectedPlace.description}</h2>
+							<h2>Posted By: {this.state.selectedPlace.poster}</h2>
+							<button>I'm Interested!</button>
 						</div>
 					</InfoWindow>
 				</Map>

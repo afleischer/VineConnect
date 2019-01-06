@@ -126,6 +126,13 @@ class App extends React.Component {
 
     }
 
+    highlightJob = (JobItem) => {
+      //Need to retrieve the "jobs" document
+        var received = JobItem.job_poster_id;
+
+        return received;
+
+    }
 
 
   render() {

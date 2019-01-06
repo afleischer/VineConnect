@@ -39,7 +39,13 @@ class JobList extends React.Component{
 	//Get the dimensions of the 
 	*/
 	populateList(){
-		//for each jobList item from Firebase
+		/**
+		 * Prop shape of "Jobs"
+		 *
+		 * an array of:
+		 * 	[0]
+		 * 	...
+		 */
 		var jobs = this.props.Jobs;
 
 		var returnArray = []
@@ -67,6 +73,8 @@ class JobList extends React.Component{
 
 				var deleteJobButton;
 
+				//check if the user is the same as the one who posted the job.
+
 				try{
 					if(this.props.ManageFlag){
 						deleteJobButton = (<input onClick ={this.props.DeleteJob} />)
@@ -80,6 +88,7 @@ class JobList extends React.Component{
 					<h3>Start date: {formattedTime}</h3>
 					
 					<p>{job.description}</p>
+					<button>I'm interested!</button>
 					{deleteJobButton}
 				</div>)
 			}
