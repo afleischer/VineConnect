@@ -188,8 +188,6 @@ REFACTORING TO componentDidMount
                 //Also TODO: Fix Google's Autocomplete
 
 
-            //TODO: Add uid generator
-
         //add in after troubleshooting:                  job_location: JobLocation()
            let addJob = async () => {
                 let db_ref = db.collection("jobs");
@@ -231,6 +229,8 @@ REFACTORING TO componentDidMount
      */
 
     deleteJob(){
+
+        //set "active" to false
 
     }
 
@@ -380,11 +380,12 @@ REFACTORING TO componentDidMount
 
                       /**
             *Only pull in the Job list if the user is logged in
+                       * TODO: {!Current}
             */
             var JobCheck;
             try{
                 var Jobs= this.props.JobsList;
-                JobCheck = (<JobList Jobs={Jobs} DeleteJob={this.props.deleteJob}/>)
+                JobCheck = (<JobList Jobs={Jobs} DeleteJob={this.props.deleteJob(Jobs.job_uuid)}/>)
             }
             catch{
                 JobCheck = (<div> No Jobs to show.  Make sure you're logged in and have posted jobs before.</div>);

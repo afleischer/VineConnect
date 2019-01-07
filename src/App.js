@@ -115,10 +115,9 @@ class App extends React.Component {
 
   }
 
-    deleteJob(){
+    deleteJob(uuid){
         //in Firebase, set "active" on job to N
 
-        //TODO: Above, modify the jobs to be pulled to not include any with "active" as N
         let toChangeUID = this.state.user_docs[1].uid
 
         //Set the business id of what is passed on to false
@@ -148,8 +147,12 @@ class App extends React.Component {
       <div className="App">
 
         <NavMenu UserData={this.state.user_docs} />
-        <Routes UserData={this.state.user_docs} Session={this.state.session} LogOutFn={this.LogOut} DeleteJob={this.deleteJob}
+        <Routes UserData={this.state.user_docs}
+                Session={this.state.session}
+                LogOutFn={this.LogOut}
+                DeleteJob={this.deleteJob}
         JobsList={this.state.displayedJobs}
+
         />
         <Footer />
 

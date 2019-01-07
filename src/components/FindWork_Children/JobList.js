@@ -73,7 +73,14 @@ class JobList extends React.Component{
 
 				var deleteJobButton;
 
-				//check if the user is the same as the one who posted the job.
+				//if the u_id of the logged in user is the same as the user
+
+				var userJobMatch = () => {
+					if(this.props.UserData[1].uuid == job.job_poster_id){
+						return {<button onClick={this.props.DeleteJob}>Delete Job</button>}
+					}
+
+				}
 
 				try{
 					if(this.props.ManageFlag){
