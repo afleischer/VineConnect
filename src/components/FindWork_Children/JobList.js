@@ -71,24 +71,29 @@ class JobList extends React.Component{
 				 * the jobs the user Has entered
 				 */
 
-				var deleteJobButton;
+				//var deleteJobButton;
 
 				//if the u_id of the logged in user is the same as the user
 
-				var userJobMatch = () => {
-					if(this.props.UserData[1].uuid == job.job_poster_id){
-						return {<button onClick={this.props.DeleteJob}>Delete Job</button>}
+				const deleteJobButton = () => {
+					try{
+						if(this.props.UserData[1].uid === job.job_poster_id){
+							return (<button onClick={this.props.DeleteJob}>Delete Job</button>)
+						}
+					}catch(err){
+						return null;
 					}
 
 				}
 
+				/*
 				try{
 					if(this.props.ManageFlag){
 						deleteJobButton = (<input onClick ={this.props.DeleteJob} />)
 					}
 
 				}catch{}
-
+				*/
 				returnArray.push(<div style={ItemStyle} className="JobListItem">
 					<h1>Job: {job.job_name}</h1>
 					<h3>Posted by: {job.job_poster} </h3>
@@ -96,7 +101,7 @@ class JobList extends React.Component{
 					
 					<p>{job.description}</p>
 					<button>I'm interested!</button>
-					{deleteJobButton}
+					{deleteJobButton()}
 				</div>)
 			}
 		}

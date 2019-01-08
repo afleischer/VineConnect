@@ -95,7 +95,7 @@ class FindWork extends React.Component{
 				<h1 className='header_text'>Available Work</h1>
 				<BreakGrid >
 					<JobMap style={GridAreaOne} Jobs={this.state.displayedJobs} userLocation = {this.state.userLocation} />
-					<JobList Jobs={this.state.displayedJobs} />
+					<JobList Jobs={this.state.displayedJobs} DeleteJob={this.props.DeleteJob} UserData={this.props.UserData} />
 					<label>Show only jobs on map?</label>
 				<input type="checkbox" onClick={this.toggleViewLock} />
 				</BreakGrid>

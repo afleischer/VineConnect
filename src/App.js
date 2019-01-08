@@ -92,11 +92,6 @@ class App extends React.Component {
                 })
             });
 
-
-
-
-
-
                 })
         } else {
           // No user is signed in.
@@ -108,10 +103,6 @@ class App extends React.Component {
           });
         }
       })
-
-
-
-
 
   }
 

@@ -39,7 +39,7 @@ class PostWork extends React.Component{
         this.toggleEndDate = this.toggleEndDate.bind(this);
         this.updateAddress = this.updateAddress.bind(this);
         this.loginCheck = this.loginCheck.bind(this);
-        this.deleteJob = this.deleteJob.bind(this);
+       /*this.deleteJob = this.deleteJob.bind(this); */
         this.onSubmit = this.onSubmit.bind(this);
 
         this.JobsRef = db.collection('jobs');
@@ -224,15 +224,7 @@ REFACTORING TO componentDidMount
 
         }
 
-    /**
-     * TODO: build this function below
-     */
 
-    deleteJob(){
-
-        //set "active" to false
-
-    }
 
     /**
     *
@@ -374,11 +366,13 @@ REFACTORING TO componentDidMount
         let loginCheck = null;
 
 
-        
+        /**
+         * If a user is logged in...
+         */
 
         if(this.props.Session){
 
-                      /**
+            /**
             *Only pull in the Job list if the user is logged in
                        * TODO: {!Current}
             */
