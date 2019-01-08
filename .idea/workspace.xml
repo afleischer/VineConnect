@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84db636a-a9ee-4178-8a74-37c24b71f1b0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FindWork.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FindWork.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FindWork_Children/JobList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FindWork_Children/JobList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PostWork.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostWork.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -34,6 +34,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="457">
+              <caret line="36" column="135" selection-start-line="36" selection-start-column="96" selection-end-line="36" selection-end-column="135" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Routes.js">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -44,15 +53,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/PostWork.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="41" column="55" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
+            <state relative-caret-position="493">
+              <caret line="216" column="32" lean-forward="true" selection-start-line="216" selection-start-column="32" selection-end-line="216" selection-end-column="32" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
                 <element signature="e#106#137#0" expanded="true" />
                 <element signature="e#362#415#0" expanded="true" />
+                <element signature="e#502#540#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -70,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/FindWork_Children/JobList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="79" column="51" lean-forward="true" selection-start-line="79" selection-start-column="51" selection-end-line="79" selection-end-column="51" />
+            <state relative-caret-position="723">
+              <caret line="135" selection-start-line="135" selection-end-line="135" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -113,15 +123,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="35" column="74" selection-start-line="35" selection-start-column="74" selection-end-line="35" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/Profile_Management/Login.js">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -136,7 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>chat history</find>
       <find>Post it here</find>
       <find>currentMark</find>
       <find>LogOut</find>
@@ -161,11 +161,12 @@
       <find>errorMess</find>
       <find>UserData</find>
       <find>onMarkerCli</find>
-      <find>JobList</find>
       <find>&lt;JobList</find>
       <find>populate</find>
-      <find>DeleteJob</find>
       <find>deleteJob</find>
+      <find>DeleteJob</find>
+      <find>JobList</find>
+      <find>geocode</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -196,11 +197,11 @@
         <option value="$PROJECT_DIR$/src/components/FindWork_Children/scriptCache.js" />
         <option value="$PROJECT_DIR$/src/styles/sharedStyleConsts" />
         <option value="$PROJECT_DIR$/src/components/FindWork_Children/JobMap.js" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/App.js" />
-        <option value="$PROJECT_DIR$/src/components/PostWork.js" />
         <option value="$PROJECT_DIR$/src/components/FindWork.js" />
         <option value="$PROJECT_DIR$/src/components/FindWork_Children/JobList.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/src/components/PostWork.js" />
       </list>
     </option>
   </component>
@@ -307,12 +308,12 @@
       <option name="presentableId" value="Default" />
       <updated>1545365043474</updated>
       <workItem from="1545365045807" duration="109894000" />
-      <workItem from="1546540480997" duration="34267000" />
+      <workItem from="1546540480997" duration="37154000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144161000" />
+    <option name="totallyTimeSpent" value="147048000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -329,11 +330,11 @@
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.09530864" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.09530864" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49951598" visible="true" weight="0.15895373" />
+      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49951598" visible="true" weight="0.15895373" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50048405" side_tool="true" weight="0.23931624" />
-      <window_info anchor="bottom" id="Version Control" order="2" weight="0.3296146" />
+      <window_info anchor="bottom" id="Version Control" order="2" weight="0.32897383" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="4" />
       <window_info anchor="bottom" id="Find" order="5" weight="0.3296146" />
@@ -341,7 +342,7 @@
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="10" weight="0.27991885" />
+      <window_info anchor="bottom" id="TODO" order="10" weight="0.27967808" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -349,18 +350,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/PostWork.js</url>
-          <line>47</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/components/Footer.js">
@@ -631,13 +620,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="35" column="74" selection-start-line="35" selection-start-column="74" selection-end-line="35" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/FindWork_Children/JobMap.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
@@ -658,23 +640,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FindWork_Children/JobList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="723">
+          <caret line="135" selection-start-line="135" selection-end-line="135" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="36" column="135" selection-start-line="36" selection-start-column="96" selection-end-line="36" selection-end-column="135" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
             <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/PostWork.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="41" column="55" selection-start-line="41" selection-start-column="55" selection-end-line="41" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#106#137#0" expanded="true" />
-            <element signature="e#362#415#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -689,12 +676,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FindWork_Children/JobList.js">
+    <entry file="file://$PROJECT_DIR$/src/components/PostWork.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="79" column="51" lean-forward="true" selection-start-line="79" selection-start-column="51" selection-end-line="79" selection-end-column="51" />
+        <state relative-caret-position="493">
+          <caret line="216" column="32" lean-forward="true" selection-start-line="216" selection-start-column="32" selection-end-line="216" selection-end-column="32" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#106#137#0" expanded="true" />
+            <element signature="e#362#415#0" expanded="true" />
+            <element signature="e#502#540#0" expanded="true" />
           </folding>
         </state>
       </provider>

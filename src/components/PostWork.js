@@ -18,6 +18,7 @@ import Autocomplete from 'react-google-autocomplete';
 import {google} from '../utils/GoogleApi'
 //import {google} from 'google-maps-react';
 import {db} from "../firebase_config";
+import Geocode from "react-geocode";
 
 
 //import {DateTime} from 'react-datetime'
@@ -46,10 +47,9 @@ class PostWork extends React.Component{
 
         this.errorMessage = null;
 
-        /***
-         * TODO: (VERIFY LATER) For PostWork, get only the jobs that the user
-         * has posted themselves
-         */
+
+
+
 /*
 
 REFACTORING TO componentDidMount
@@ -167,8 +167,26 @@ REFACTORING TO componentDidMount
             /**
              * Function to derive latitude and longitude from address
              */
-            /*
-            const JobLocation = () =>{
+
+            const JobLocation = async () =>{
+                var address = this.state.job_address
+
+                var geocodedAddress = await Geocode.fromAddress(address).then(
+                    response => {
+                        const { lat, lng } = response.results[0].geometry.location;
+                        var responseVal = []
+                        responseVal[0] = lat;
+                        responseVal[1] = lng;
+                        return responseVal
+                    },
+                    error => {
+                        console.error(error);
+                    }
+                );
+
+                return geocodedAddress
+
+                /*
                 var geocoder = new google.maps.Geocoder();
                 var address = this.state.job_address;
 
@@ -183,8 +201,10 @@ REFACTORING TO componentDidMount
                     }
                 })
                 return JobLocationReturn
+                */
             }
-            */
+
+                //TODO: find a way to force Autocomplete option
                 //Also TODO: Fix Google's Autocomplete
 
 
@@ -201,7 +221,8 @@ REFACTORING TO componentDidMount
                    job_end: this.state.job_end,
                    job_poster: this.props.UserData[1].user_name,
                    job_poster_id: this.props.UserData[1].uid,
-                   job_address: this.state.job_address
+                   job_address: this.state.job_address,
+                   job_location: JobLocation()
                })
 
 
@@ -224,6 +245,11 @@ REFACTORING TO componentDidMount
 
         }
 
+        componentDidMount() {
+
+            Geocode.setApiKey("AIzaSyCwomCR76QqvAsziOJzvunlmlo7mveJQ0w");
+            Geocode.enableDebug();
+        }
 
 
     /**
@@ -374,12 +400,15 @@ REFACTORING TO componentDidMount
 
             /**
             *Only pull in the Job list if the user is logged in
-                       * TODO: {!Current}
+                       * TODO: Verify that this JobList is pulling correctly
             */
             var JobCheck;
             try{
                 var Jobs= this.props.JobsList;
-                JobCheck = (<JobList Jobs={Jobs} DeleteJob={this.props.deleteJob(Jobs.job_uuid)}/>)
+                JobCheck = (<JobList Jobs={Jobs}
+                                     DeleteJob={this.props.deleteJob(Jobs.job_uuid)}
+                                     UserData={this.props.UserData}
+                            />)
             }
             catch{
                 JobCheck = (<div> No Jobs to show.  Make sure you're logged in and have posted jobs before.</div>);
