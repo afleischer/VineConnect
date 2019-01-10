@@ -14,6 +14,10 @@ import styled from 'styled-components'
 /**
  * Google Maps API
  */
+import {geocodeByAddress} from 'react-places-autocomplete'
+import LocationSearchInput from './AutocompleteField'
+import PlacesAutocomplete from 'react-places-autocomplete';
+
 import Autocomplete from 'react-google-autocomplete';
 import {google} from '../utils/GoogleApi'
 //import {google} from 'google-maps-react';
@@ -44,6 +48,7 @@ class PostWork extends React.Component{
         this.onSubmit = this.onSubmit.bind(this);
 
         this.JobsRef = db.collection('jobs');
+        this.addressRef = React.createRef();
 
         this.errorMessage = null;
 
@@ -168,6 +173,20 @@ REFACTORING TO componentDidMount
              * Function to derive latitude and longitude from address
              */
 
+            /**
+             * Try a synchronous version
+             * @returns {Promise<*>}
+             * @constructor
+             */
+
+            const JobLocation = () =>{
+                let address = this.state.job_address;
+
+                let geocodedAddress = geocodeByAddress(address);
+                console.log(geocodedAddress)
+            }
+
+            /*
             const JobLocation = async () =>{
                 var address = this.state.job_address
 
@@ -185,25 +204,8 @@ REFACTORING TO componentDidMount
                 );
 
                 return geocodedAddress
-
-                /*
-                var geocoder = new google.maps.Geocoder();
-                var address = this.state.job_address;
-
-                var JobLocationReturn;
-
-                geocoder.geocode({'address': address}, function(results, status){
-                    if(status == google.maps.GeocoderStatus.OK) {
-                        var latitude = results[0].geometry.location.lat();
-                        var longitude = results[0].geometry.location.lng();
-                        JobLocationReturn = [latitude, longitude]
-                        //TODO: parse and upload this to Firebase now!
-                    }
-                })
-                return JobLocationReturn
-                */
             }
-
+            */
                 //TODO: find a way to force Autocomplete option
                 //Also TODO: Fix Google's Autocomplete
 
@@ -246,9 +248,16 @@ REFACTORING TO componentDidMount
         }
 
         componentDidMount() {
-
+            /*
+            google.autocomplete.addListener("place_changed", function(place){
+                this.setState({
+                    job_address: place
+                })
+            })
+               */
             Geocode.setApiKey("AIzaSyCwomCR76QqvAsziOJzvunlmlo7mveJQ0w");
             Geocode.enableDebug();
+
         }
 
 
@@ -471,10 +480,10 @@ REFACTORING TO componentDidMount
                     
                     <p>
                         <label>Where will the job be at? </label>
-                        <Autocomplete
-                            onChange={(e) => this.updateAddress(e)}
-                            onPlaceSelected={(place) => console.log("place is:"+place)}
-                        />
+                        <PlacesAutocomplete
+                            value={this.state.value}
+                            onChange={value => this.setState({ value })}
+                        ></PlacesAutocomplete>
                     </p>
 
                     <input type="submit" onClick={this.onSubmit}></input>
@@ -488,6 +497,13 @@ REFACTORING TO componentDidMount
                 </div>
                 )
 
+            /** Old autocomplete
+             *                        <Autocomplete
+             onChange={(e) => this.updateAddress(e)}
+             onPlaceSelected={(place) => console.log("place is:"+place)}
+             ref={this.addressRef}
+             />
+             */
         }
         else if(!this.props.Session){
 

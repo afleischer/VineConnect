@@ -7,6 +7,7 @@
     "eslint": "^5.11.1",
     "firebaseui": "^3.4.1",
     "google-maps-react": "^2.0.2",
+    "loadjs": "^3.5.5",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-geocode": "^0.1.2",

@@ -117,6 +117,10 @@ class JobMap extends React.Component {
 		}
 	}
 
+	componentDidMount() {
+
+	}
+
 	render(){
 
 		const style = {
