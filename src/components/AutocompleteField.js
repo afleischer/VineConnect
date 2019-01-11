@@ -33,7 +33,7 @@ class LocationSearchInput extends React.Component {
         //input the value into the input field
 
         //this.setState({ address });
-        this.props.handleAutoselect(true)
+        this.props.handleAutoselect(address, true);
     };
 
     render() {
@@ -51,6 +51,7 @@ class LocationSearchInput extends React.Component {
                                 placeholder: 'Enter a location',
                                 className: 'location-search-input',
                             })}
+                            size="35"
                         />
                         <div className="autocomplete-dropdown-container">
                             {loading && <div>Loading...</div>}

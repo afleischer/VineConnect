@@ -25,8 +25,8 @@ import {db} from "../firebase_config";
 import Geocode from "react-geocode";
 
 
-//import {DateTime} from 'react-datetime'
 
+import {DateTime} from 'react-datetime'
 
 const uuidv1 = require('uuid/v1');
 const google = window.google;
@@ -172,6 +172,30 @@ REFACTORING TO componentDidMount
             missingStates.push("Address");
         }
 
+        //Check the start date 
+        if(this.state.job_start){
+
+            let dateMilliseconds = Date.parse(this.state.job_start)
+            let now = Date.now();
+            if(dateMilliseconds < now){
+                //The user has selected a time before today, throw error
+            missingStates.push("Valid (non-past) Start Date")
+
+            }
+        }
+
+        if(this.state.job_end && this.state.job_start){
+            let dateStart = Date.parse(this.state.job_start); 
+            let dateEnd = Date.parse(this.state.job_end); 
+            let now = Date.now(); 
+            if(dateEnd < dateStart){
+                //The user has selected a time before today, throw error
+                missingStates.push("Valid (before start) End Date");
+            }
+        }
+
+
+
         if (missingStates.length != 0){
             var combinedMessage ="";
             for(let i = 0; i < missingStates.length; i++){
@@ -181,7 +205,12 @@ REFACTORING TO componentDidMount
             this.setState({form_error_message: errorMessage})
         }
         if (missingStates.length == 0){
+
             this.setState({form_error_message: "no_error"})
+
+
+
+
 
             /**
              * Function to derive latitude and longitude from address
@@ -259,8 +288,9 @@ REFACTORING TO componentDidMount
 
         }
 
-        handleAutoselect(value) {
+        handleAutoselect(address, value) {
             this.setState({
+                job_address : address,
                 autoselected : value
             })
         }
@@ -283,12 +313,13 @@ REFACTORING TO componentDidMount
             /*
             this.autocomplete = new google.maps.places.Autocomplete(this.autocompleteInput.current,
                 {"types": ["geocode"]});
-            */
+            
             const AutocompleteField = this.addressRef.current;
 
             if(AutocompleteField){
                 AutocompleteField.addListener('place_changed', this.handlePlaceChanged);
             }
+            */
 
         }
 
@@ -501,12 +532,12 @@ REFACTORING TO componentDidMount
                     </p>
                     <p>
                         <label>When does the job begin?</label>
-                    <input type="datetime" onChange={(e) => this.updateJobStartDate(e)} type="text"></input>
+                    <input type="datetime" onChange={(e) => this.updateJobStartDate(e)} type="datetime-local"></input>
                     </p>
 
                     <p>
 <label>When does the job end?</label>
-                    <input type="datetime" onChange={(e) => this.updateJobEndDate(e)} type="text"></input>
+                    <input type="datetime" onChange={(e) => this.updateJobEndDate(e)} type="datetime-local"></input>
                     </p>
 
                     <p>
@@ -517,14 +548,7 @@ REFACTORING TO componentDidMount
                     <p>
                         <label>Where will the job be at? </label>
 
-                        <Autocomplete
-                        onChange={(e) => this.updateAddress(e)}
-                        onPlaceSelected={(place) => console.log("place is:"+place)}
-                        componentDidMount={this.AutocompleteInit}
-                        ref={this.addressRef}
-                        types={"address"}
-                    />
-
+                        
                         <LocationSearchInput
                             handleAutoselect={this.handleAutoselect}
                             updateLatLng={this.updateLatLng}
@@ -544,10 +568,15 @@ REFACTORING TO componentDidMount
                 )
 
             /** Old autocomplete
-             *       <PlacesAutocomplete
-             value={this.state.value}
-             onChange={value => this.setState({ value })}
-             ></PlacesAutocomplete>
+
+                    <Autocomplete
+                        onChange={(e) => this.updateAddress(e)}
+                        onPlaceSelected={(place) => console.log("place is:"+place)}
+                        componentDidMount={this.AutocompleteInit}
+                        ref={this.addressRef}
+                        types={"address"}
+                    />
+
              */
         }
         else if(!this.props.Session){
