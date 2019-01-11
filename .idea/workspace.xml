@@ -2,10 +2,12 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/components/NavMenu_Child/Hamburger.js" line="40" mnemonic="9" />
+    <bookmark url="file://$PROJECT_DIR$/src/components/AutocompleteField.js" line="66" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84db636a-a9ee-4178-8a74-37c24b71f1b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AutocompleteField.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AutocompleteField.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PostWork.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostWork.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,22 +21,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/PostWork.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="487" column="39" selection-start-line="487" selection-start-column="39" selection-end-line="487" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-                <element signature="e#106#137#0" expanded="true" />
-                <element signature="e#362#371#0" expanded="true" />
-                <element signature="e#502#540#0" expanded="true" />
-                <element signature="e#4509#5847#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/index.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -47,20 +33,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/FindWork.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="67" column="49" selection-start-line="67" selection-start-column="49" selection-end-line="67" selection-end-column="49" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/FindWork_Children/JobList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="104" column="23" selection-start-line="104" selection-start-column="23" selection-end-line="104" selection-end-column="23" />
+            <state relative-caret-position="459">
+              <caret line="27" column="40" lean-forward="true" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -71,8 +45,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/FindWork_Children/JobMap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
+            <state relative-caret-position="262">
+              <caret line="66" column="10" lean-forward="true" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
               <folding>
                 <element signature="e#247#294#0" expanded="true" />
               </folding>
@@ -81,28 +55,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/styles/sharedStyleConsts">
+        <entry file="file://$PROJECT_DIR$/src/components/PostWork.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+            <state relative-caret-position="17">
+              <caret line="139" column="10" selection-start-line="139" selection-start-column="10" selection-end-line="139" selection-end-column="10" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#106#137#0" expanded="true" />
+                <element signature="e#362#420#0" expanded="true" />
+                <element signature="e#502#540#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/react-google-autocomplete/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/AutocompleteField.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+            <state relative-caret-position="222">
+              <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -113,8 +84,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/node_modules/react-google-autocomplete/lib/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1170">
-              <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
+            <state relative-caret-position="251">
+              <caret line="128" column="25" selection-start-line="128" selection-start-column="25" selection-end-line="128" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/react-google-autocomplete/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="28" lean-forward="true" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/styles/sharedStyleConsts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/FindWork_Children/JobList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -132,16 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>uID</find>
-      <find>delete</find>
-      <find>Jobs</find>
-      <find>fb_ref</find>
-      <find>google.maps</find>
-      <find>goog</find>
-      <find>Place is:</find>
-      <find>selectedPla</find>
-      <find>place is:</find>
-      <find>onSubmi</find>
       <find>uuid</find>
       <find>Autocomplet</find>
       <find>errorMess</find>
@@ -157,11 +145,21 @@
       <find>state.job_add</find>
       <find>google.</find>
       <find>componen</find>
-      <find>Autocomp</find>
       <find>&lt;Autoco</find>
-      <find>google</find>
       <find>geocodeBya</find>
+      <find>UNSAFE</find>
+      <find>unsafe</find>
+      <find>Autocomp</find>
+      <find>google</find>
+      <find>this.refs</find>
+      <find>this.refs.input</find>
+      <find>LocationSearchI</find>
+      <find>Search plac</find>
       <find>Autocomplete</find>
+      <find>handleAuto</find>
+      <find>Geocode</find>
+      <find>updateLat</find>
+      <find>latLng</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -198,14 +196,15 @@
         <option value="$PROJECT_DIR$/src/utils/GoogleApi.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/load.js" />
-        <option value="$PROJECT_DIR$/src/components/AutocompleteField.js" />
+        <option value="$PROJECT_DIR$/node_modules/react-google-autocomplete/lib/index.js" />
         <option value="$PROJECT_DIR$/src/components/PostWork.js" />
+        <option value="$PROJECT_DIR$/src/components/AutocompleteField.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="163" />
-    <option name="width" value="1297" />
+    <option name="x" value="966" />
+    <option name="width" value="1453" />
     <option name="height" value="1398" />
   </component>
   <component name="ProjectView">
@@ -306,12 +305,12 @@
       <updated>1545365043474</updated>
       <workItem from="1545365045807" duration="109894000" />
       <workItem from="1546540480997" duration="37823000" />
-      <workItem from="1547005254091" duration="11503000" />
+      <workItem from="1547005254091" duration="21547000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159220000" />
+    <option name="totallyTimeSpent" value="169264000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -323,14 +322,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="131" y="0" width="1037" height="1118" extended-state="0" />
+    <frame x="773" y="0" width="1162" height="1118" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.193" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.17155555" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49951598" visible="true" weight="0.2535497" />
+      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49951598" visible="true" weight="0.168357" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50048405" side_tool="true" weight="0.23931624" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.32897383" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
@@ -354,7 +353,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/AutocompleteField.js</url>
-          <line>57</line>
+          <line>73</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
@@ -629,23 +628,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/react-google-autocomplete/lib/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1170">
-          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FindWork.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="67" column="49" selection-start-line="67" selection-start-column="49" selection-end-line="67" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/load.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -656,10 +638,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/GoogleApi.js">
+    <entry file="file://$PROJECT_DIR$/src/components/FindWork.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="586">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        <state relative-caret-position="459">
+          <caret line="27" column="40" lean-forward="true" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -670,60 +655,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AutocompleteField.js">
+    <entry file="file://$PROJECT_DIR$/src/utils/GoogleApi.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FindWork_Children/JobList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="104" column="23" selection-start-line="104" selection-start-column="23" selection-end-line="104" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FindWork_Children/JobMap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="e#247#294#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="586">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/styles/sharedStyleConsts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FindWork_Children/JobList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="5" lean-forward="true" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/react-google-autocomplete/lib/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="128" column="25" selection-start-line="128" selection-start-column="25" selection-end-line="128" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-google-autocomplete/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+          <caret line="2" column="28" lean-forward="true" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FindWork_Children/JobMap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="66" column="10" lean-forward="true" selection-start-line="66" selection-start-column="10" selection-end-line="66" selection-end-column="10" />
+          <folding>
+            <element signature="e#247#294#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/PostWork.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="487" column="39" selection-start-line="487" selection-start-column="39" selection-end-line="487" selection-end-column="39" />
+        <state relative-caret-position="17">
+          <caret line="139" column="10" selection-start-line="139" selection-start-column="10" selection-end-line="139" selection-end-column="10" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
             <element signature="e#106#137#0" expanded="true" />
-            <element signature="e#362#371#0" expanded="true" />
+            <element signature="e#362#420#0" expanded="true" />
             <element signature="e#502#540#0" expanded="true" />
-            <element signature="e#4509#5847#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AutocompleteField.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

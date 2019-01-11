@@ -7,18 +7,33 @@ import PlacesAutocomplete, {
 class LocationSearchInput extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { address: '' };
+        this.state = {
+            address: ''
+        };
+        this.inputRef = React.createRef();
     }
 
     handleChange = address => {
         this.setState({ address });
+        if(!address){
+            this.props.handleAutoselect(false)
+        }
     };
 
     handleSelect = address => {
+
+        this.setState({address: address})
+
         geocodeByAddress(address)
             .then(results => getLatLng(results[0]))
+            .then(latLng => this.props.updateLatLng(latLng))
             .then(latLng => console.log('Success', latLng))
             .catch(error => console.error('Error', error));
+
+        //input the value into the input field
+
+        //this.setState({ address });
+        this.props.handleAutoselect(true)
     };
 
     render() {
@@ -31,8 +46,9 @@ class LocationSearchInput extends React.Component {
                 {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
                     <div>
                         <input
+                            value={this.state.address.value}
                             {...getInputProps({
-                                placeholder: 'Search Places ...',
+                                placeholder: 'Enter a location',
                                 className: 'location-search-input',
                             })}
                         />

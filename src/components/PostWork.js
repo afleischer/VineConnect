@@ -19,7 +19,7 @@ import LocationSearchInput from './AutocompleteField'
 import PlacesAutocomplete from 'react-places-autocomplete';
 
 import Autocomplete from 'react-google-autocomplete';
-import {google} from '../utils/GoogleApi'
+//import {google} from '../utils/GoogleApi'
 //import {google} from 'google-maps-react';
 import {db} from "../firebase_config";
 import Geocode from "react-geocode";
@@ -29,6 +29,8 @@ import Geocode from "react-geocode";
 
 
 const uuidv1 = require('uuid/v1');
+const google = window.google;
+
 
 
 /**
@@ -46,9 +48,14 @@ class PostWork extends React.Component{
         this.loginCheck = this.loginCheck.bind(this);
        /*this.deleteJob = this.deleteJob.bind(this); */
         this.onSubmit = this.onSubmit.bind(this);
+        this.handlePlaceChanged = this.handlePlaceChanged.bind(this);
+        this.updateLatLng = this.updateLatLng.bind(this);
+
+        this.handleAutoselect = this.handleAutoselect.bind(this);
 
         this.JobsRef = db.collection('jobs');
         this.addressRef = React.createRef();
+
 
         this.errorMessage = null;
 
@@ -88,7 +95,8 @@ REFACTORING TO componentDidMount
     }
 
     state={
-        form_error_message : "no_error"
+        form_error_message : "no_error",
+        autoselected : false
     }
 
 
@@ -127,6 +135,12 @@ REFACTORING TO componentDidMount
             job_address : e.target.value
         })
 
+    }
+
+    updateLatLng(latLng){
+        this.setState({
+            job_location : latLng
+        })
     }
     loginCheck(e){
 
@@ -207,8 +221,6 @@ REFACTORING TO componentDidMount
             }
             */
                 //TODO: find a way to force Autocomplete option
-                //Also TODO: Fix Google's Autocomplete
-
 
         //add in after troubleshooting:                  job_location: JobLocation()
            let addJob = async () => {
@@ -224,7 +236,7 @@ REFACTORING TO componentDidMount
                    job_poster: this.props.UserData[1].user_name,
                    job_poster_id: this.props.UserData[1].uid,
                    job_address: this.state.job_address,
-                   job_location: JobLocation()
+                   job_location: this.state.job_location
                })
 
 
@@ -247,6 +259,16 @@ REFACTORING TO componentDidMount
 
         }
 
+        handleAutoselect(value) {
+            this.setState({
+                autoselected : value
+            })
+        }
+
+        handlePlaceChanged(){
+
+        }
+
         componentDidMount() {
             /*
             google.autocomplete.addListener("place_changed", function(place){
@@ -258,12 +280,26 @@ REFACTORING TO componentDidMount
             Geocode.setApiKey("AIzaSyCwomCR76QqvAsziOJzvunlmlo7mveJQ0w");
             Geocode.enableDebug();
 
+            /*
+            this.autocomplete = new google.maps.places.Autocomplete(this.autocompleteInput.current,
+                {"types": ["geocode"]});
+            */
+            const AutocompleteField = this.addressRef.current;
+
+            if(AutocompleteField){
+                AutocompleteField.addListener('place_changed', this.handlePlaceChanged);
+            }
+
         }
+
+
 
 
     /**
     *
-    
+
+
+
     componentDidMount(){
         if(this.props.Session != undefined){
                 db.collection("jobs").where("active", "==", true)
@@ -484,9 +520,15 @@ REFACTORING TO componentDidMount
                         <Autocomplete
                         onChange={(e) => this.updateAddress(e)}
                         onPlaceSelected={(place) => console.log("place is:"+place)}
+                        componentDidMount={this.AutocompleteInit}
                         ref={this.addressRef}
                         types={"address"}
                     />
+
+                        <LocationSearchInput
+                            handleAutoselect={this.handleAutoselect}
+                            updateLatLng={this.updateLatLng}
+                        />
 
                     </p>
 
