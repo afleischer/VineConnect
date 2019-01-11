@@ -480,10 +480,14 @@ REFACTORING TO componentDidMount
                     
                     <p>
                         <label>Where will the job be at? </label>
-                        <PlacesAutocomplete
-                            value={this.state.value}
-                            onChange={value => this.setState({ value })}
-                        ></PlacesAutocomplete>
+
+                        <Autocomplete
+                        onChange={(e) => this.updateAddress(e)}
+                        onPlaceSelected={(place) => console.log("place is:"+place)}
+                        ref={this.addressRef}
+                        types={"address"}
+                    />
+
                     </p>
 
                     <input type="submit" onClick={this.onSubmit}></input>
@@ -498,11 +502,10 @@ REFACTORING TO componentDidMount
                 )
 
             /** Old autocomplete
-             *                        <Autocomplete
-             onChange={(e) => this.updateAddress(e)}
-             onPlaceSelected={(place) => console.log("place is:"+place)}
-             ref={this.addressRef}
-             />
+             *       <PlacesAutocomplete
+             value={this.state.value}
+             onChange={value => this.setState({ value })}
+             ></PlacesAutocomplete>
              */
         }
         else if(!this.props.Session){

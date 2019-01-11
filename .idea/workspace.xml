@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="84db636a-a9ee-4178-8a74-37c24b71f1b0" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/FindWork_Children/JobMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FindWork_Children/JobMap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PostWork.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PostWork.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -25,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/PostWork.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="185" column="44" selection-start-line="185" selection-start-column="43" selection-end-line="185" selection-end-column="44" />
+            <state relative-caret-position="253">
+              <caret line="487" column="39" selection-start-line="487" selection-start-column="39" selection-end-line="487" selection-end-column="39" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
                 <element signature="e#106#137#0" expanded="true" />
@@ -162,9 +159,9 @@
       <find>componen</find>
       <find>Autocomp</find>
       <find>&lt;Autoco</find>
-      <find>Autocomplete</find>
       <find>google</find>
       <find>geocodeBya</find>
+      <find>Autocomplete</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -207,7 +204,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="163" />
     <option name="width" value="1297" />
     <option name="height" value="1398" />
   </component>
@@ -309,12 +306,12 @@
       <updated>1545365043474</updated>
       <workItem from="1545365045807" duration="109894000" />
       <workItem from="1546540480997" duration="37823000" />
-      <workItem from="1547005254091" duration="9810000" />
+      <workItem from="1547005254091" duration="11503000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="157527000" />
+    <option name="totallyTimeSpent" value="159220000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -326,14 +323,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="1037" height="1118" extended-state="0" />
+    <frame x="131" y="0" width="1037" height="1118" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.193" />
+      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.193" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49951598" visible="true" weight="0.2535497" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49951598" visible="true" weight="0.2535497" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50048405" side_tool="true" weight="0.23931624" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.32897383" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
@@ -719,8 +716,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/PostWork.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="185" column="44" selection-start-line="185" selection-start-column="43" selection-end-line="185" selection-end-column="44" />
+        <state relative-caret-position="253">
+          <caret line="487" column="39" selection-start-line="487" selection-start-column="39" selection-end-line="487" selection-end-column="39" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
             <element signature="e#106#137#0" expanded="true" />
