@@ -110,10 +110,12 @@ class JobList extends React.Component{
 			display: 'inline-block'
 		}
 
-
+		const overflowStyle = {
+			overflow: 'scroll'
+		}
 
 		return(
-			<div>
+			<div style={overflowStyle}>
 				{returnArray}
 			</div>
 		)
@@ -135,13 +137,16 @@ class JobList extends React.Component{
 
 
 
-		const GridAreaTwo = {
-			"grid-area" : "two"
+		const GridAreaTwoScroll = {
+			"grid-area" : "two",
+			"overflow" : 'scroll',
+			'border-radius': '16px'
 		}
 
 
 		return(
-			<List style={GridAreaTwo}>
+			<List style={GridAreaTwoScroll}>
+				<h3> Available Jobs </h3> 
 				{this.populateList()}
 			</List>
 		)
