@@ -451,13 +451,15 @@ REFACTORING TO componentDidMount
 
         const JobAddDiv = {
             "height": "calc(100vh - 500px)",
-            "width" : "50%"
+            "width" : "50%",
+            "background-color" : "rgb(250, 250, 250)"
         }
 
         const MyJobList = {
             "width" : "50%",
             "float" : "right",
             "height": "calc(100vh - 500px)",
+            "background-color" : "rgb(247, 247, 247)"
 
         }
 
@@ -482,10 +484,15 @@ REFACTORING TO componentDidMount
             var JobCheck;
             var Jobs = this.props.JobsList;
 
+            const JobListStyle= {
+                "width" : "99%"
+            }
+
             if(Jobs){
                 JobCheck = (<JobList Jobs={Jobs}
                                      DeleteJob={this.props.DeleteJob(Jobs.job_uuid)}
                                      UserData={this.props.UserData}
+                                     style={JobListStyle}
                             />)
             }
             else{
@@ -514,6 +521,11 @@ REFACTORING TO componentDidMount
                     "color" : "green"
             }
 
+            const NoTop = {
+                "margin-top" : 0,
+                "padding-top" : "5%"
+            }
+
             var errorMessage = null;
             if(this.state.form_error_message != "no_error"){
                 errorMessage = (<div style={errorStyle}>{this.state.form_error_message}</div>)
@@ -535,23 +547,23 @@ REFACTORING TO componentDidMount
                 </div>
 
                 <div style={JobAddDiv}>
-                    <h2> Job Post form</h2>
+                    <h2 style={NoTop}> Job Post form</h2>
 
                     <p>
-                        <label>What's the name of the job?</label>
+                        <label>What's the name of the job?</label><br/>
                         <input onChange={(e) => this.updateName(e)}></input>
                     </p>
                     <p>
-                        <label>Describe the job:</label>
+                        <label>Describe the job:</label><br/>
                         <input onChange={(e) => this.updateJob(e)} type="text"></input>
                     </p>
                     <p>
-                        <label>When does the job begin?</label>
+                        <label>When does the job begin?</label><br/>
                     <input type="datetime" onChange={(e) => this.updateJobStartDate(e)} type="datetime-local"></input>
                     </p>
 
                     <p>
-<label>When does the job end?</label>
+<label>When does the job end?</label><br/>
                     <input type="datetime" onChange={(e) => this.updateJobEndDate(e)} type="datetime-local"></input>
                     </p>
 
@@ -609,7 +621,7 @@ REFACTORING TO componentDidMount
                 <FullWidth>
                   <RightOverlay> 
                       <InnerPadding>
-                      <MainHeader>Need help to find a job?</MainHeader>
+                      <MainHeader>Need workers for your vineyard?</MainHeader>
                         <p>Use the below form to post it so that others can see where it is!</p>
                         </InnerPadding>
                     </RightOverlay>  

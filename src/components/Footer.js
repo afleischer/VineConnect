@@ -13,7 +13,7 @@ class Footer extends React.Component{
 
         const FooterContainer = styled.div`
             height: 10vh;
-            background-color: #666699;
+            background-color: #2f2f2f;
             width: 100vw;
         `
 
