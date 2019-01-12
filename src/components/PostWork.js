@@ -46,7 +46,6 @@ class PostWork extends React.Component{
         this.toggleEndDate = this.toggleEndDate.bind(this);
         this.updateAddress = this.updateAddress.bind(this);
         this.loginCheck = this.loginCheck.bind(this);
-       /*this.deleteJob = this.deleteJob.bind(this); */
         this.onSubmit = this.onSubmit.bind(this);
         this.handlePlaceChanged = this.handlePlaceChanged.bind(this);
         this.updateLatLng = this.updateLatLng.bind(this);
@@ -288,6 +287,7 @@ REFACTORING TO componentDidMount
 
         }
 
+
         handleAutoselect(address, value) {
             this.setState({
                 job_address : address,
@@ -326,12 +326,10 @@ REFACTORING TO componentDidMount
 
 
 
-    /**
-    *
-
-
+/*
 
     componentDidMount(){
+
         if(this.props.Session != undefined){
                 db.collection("jobs").where("active", "==", true)
                     .where("job_poster", "==", this.user)
@@ -346,9 +344,11 @@ REFACTORING TO componentDidMount
                         displayedJobs : jobsArr
                     })
                 });
+
         }
 
     }
+    
 
     UNSAFE_componentWillReceiveProps(nextProps){
       //if the session data chances...
@@ -370,6 +370,7 @@ REFACTORING TO componentDidMount
       }
     }
     */
+
 
     render(){
 
@@ -479,6 +480,19 @@ REFACTORING TO componentDidMount
                        * TODO: Verify that this JobList is pulling correctly
             */
             var JobCheck;
+            var Jobs = this.props.JobsList;
+
+            if(Jobs){
+                JobCheck = (<JobList Jobs={Jobs}
+                                     DeleteJob={this.props.DeleteJob(Jobs.job_uuid)}
+                                     UserData={this.props.UserData}
+                            />)
+            }
+            else{
+                JobCheck = (<div> No Jobs to show.  Make sure you're logged in and have posted jobs before.</div>);
+    
+            }
+            /*
             try{
                 var Jobs= this.props.JobsList;
                 JobCheck = (<JobList Jobs={Jobs}
@@ -489,6 +503,7 @@ REFACTORING TO componentDidMount
             catch{
                 JobCheck = (<div> No Jobs to show.  Make sure you're logged in and have posted jobs before.</div>);
             }
+            */
 
             var errorStyle = {
                     "color" : "red"
