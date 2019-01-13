@@ -1,0 +1,38 @@
+
+
+.profile_photo{
+    grid-area: photo;
+}
+
+.profile_username{
+    grid-area: username;
+}
+
+.profile_description{
+    grid-area: description;
+}
+
+.profile_chat{
+    grid-area: chat;
+}
+
+.profile_jobs_accepted{
+    grid-area: jobs_accepted;
+}
+
+.profile_jobs_posted{
+    grid-area: jobs_posted;
+}
+
+.profile_business{
+
+}
+
+.profile_container{
+    display: grid;
+    grid-tempate-areas: 'photo description description chat'
+    'username description description chat'
+    'jobs_accepted jobs_accepted jobs_posted jobs_posted ';
+    grid-template-rows: 20vh;
+    grid-template-columns: 1vw;
+}
