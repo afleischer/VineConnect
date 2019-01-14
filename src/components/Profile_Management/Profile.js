@@ -36,6 +36,10 @@ class UserProfile extends React.Component {
          */
     }
 
+    onUploadClick(){
+
+    }
+
     render() {
 
         var returnValPre = [];
@@ -55,6 +59,7 @@ class UserProfile extends React.Component {
                     <div className="profile_photo">
                         <h2>Profile Photo:</h2>
                         <h3>{returnValPre[1].user_photo}</h3>
+                        <input onClick={this.onUploadClick} /> 
                     </div>
                     <div className="profile_description">
                         <h2>Your Description:</h2>
