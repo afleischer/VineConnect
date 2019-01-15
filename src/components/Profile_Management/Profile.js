@@ -60,6 +60,31 @@ class UserProfile extends React.Component {
         })
     }
 
+    retrieveProfileImage = (e) => {
+        if(this.props.UserData){
+            let userID = this.props.UserData[1].uid;
+
+            var profileImageRef = firebase.storage().ref().child("profileImages/"+userID+"/");
+            var profileSource = profileImageRef.getDownloadURL();
+
+            if (!profileSource){
+
+            }
+            else{
+                this.setState({
+                    profile_image_src : profileSource
+                })            
+            }
+
+        }
+        else {return 0;}
+
+    }
+
+    componentDidMount(){
+        this.retrieveProfileImage();
+    }
+
     render() {
 
         var returnValPre = [];
@@ -79,6 +104,7 @@ class UserProfile extends React.Component {
                     <div className="profile_photo">
                         <h2>Profile Photo:</h2>
                         <h3>{returnValPre[1].user_photo}</h3>
+                        <div><img src={this.state.profile_image_src ? this.state.profile_image_src : null} /></div>
                         <input type="file" onChange={(e) => this.onUploadClick(e)} /> 
                     </div>
                     <div className="profile_description">
