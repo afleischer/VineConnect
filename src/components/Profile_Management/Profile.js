@@ -2,6 +2,8 @@ import React from 'react'
 
 import '../../styles/grids.css'
 
+import firebase from 'firebase';
+
 class Profile extends React.Component{
     constructor(props){
         super(props);
@@ -36,8 +38,26 @@ class UserProfile extends React.Component {
          */
     }
 
-    onUploadClick(){
+    state= {
 
+    }
+
+    onUploadClick = (e) => {
+        //send photo to firebase
+        let userID = this.props.UserData[1].uid;
+        var fileToUpload = e.target.files[0];
+
+        //Send to firebase
+        var storageRef = firebase.storage().ref().child("profileImages/"+userID+"/"+e.target.files[0].name);
+
+        console.log("file object keys are:"+fileToUpload);
+        storageRef.put(fileToUpload).then(() => {
+            this.setState({
+                uploadNotice : "success"
+            })
+        }).catch({
+                uploadNotice : "failure"
+        })
     }
 
     render() {
@@ -59,7 +79,7 @@ class UserProfile extends React.Component {
                     <div className="profile_photo">
                         <h2>Profile Photo:</h2>
                         <h3>{returnValPre[1].user_photo}</h3>
-                        <input onClick={this.onUploadClick} /> 
+                        <input type="file" onChange={(e) => this.onUploadClick(e)} /> 
                     </div>
                     <div className="profile_description">
                         <h2>Your Description:</h2>
