@@ -133,7 +133,7 @@ class Hamburger extends React.Component{
             <div>
                 <HamburgerSelector ToggleMenu={this.toggleMenu}  />
                     <Menu Opened={this.state.Closed}> 
-                        <MenuItemText><NavLink style={textStyle} to='/profile'>Your Profile</NavLink></MenuItemText>
+                        <MenuItemText><NavLink style={textStyle} to='/profile'>Profile</NavLink></MenuItemText>
                         <MenuItemText><NavLink style={textStyle} to='/settings'>Settings</NavLink></MenuItemText>
                         {LoginOption}
                         <MenuItemText onClick={this.logOut}>Log Out</MenuItemText>

@@ -6,10 +6,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="84db636a-a9ee-4178-8a74-37c24b71f1b0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NavMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/FindWork_Children/JobList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FindWork_Children/JobList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/NavMenu_Child/Hamburger.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavMenu_Child/Hamburger.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/NavStyler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/NavStyler.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/NavMenu_Child/Hamburger.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="96" column="11" selection-start-line="96" selection-start-column="11" selection-end-line="96" selection-end-column="11" />
+            <state relative-caret-position="370">
+              <caret line="136" column="79" selection-start-line="136" selection-start-column="79" selection-end-line="136" selection-end-column="79" />
             </state>
           </provider>
         </entry>
@@ -34,8 +32,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/NavMenu.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="219">
+              <caret line="59" column="31" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/FindWork_Children/JobList.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="338">
+              <caret line="109" column="23" selection-start-line="109" selection-start-column="23" selection-end-line="109" selection-end-column="23" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -118,15 +128,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/AutocompleteField.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -138,10 +139,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>onMarkerCli</find>
-      <find>&lt;JobList</find>
-      <find>populate</find>
-      <find>deleteJob</find>
       <find>DeleteJob</find>
       <find>JobList</find>
       <find>geocode</find>
@@ -168,6 +165,10 @@
       <find>DateTime</find>
       <find>6vh</find>
       <find>right</find>
+      <find>JobListItem</find>
+      <find>ItemSty</find>
+      <find>styled</find>
+      <find>Your Profile</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -197,7 +198,6 @@
         <option value="$PROJECT_DIR$/src/styles/sharedStyleConsts" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/FindWork.js" />
-        <option value="$PROJECT_DIR$/src/components/FindWork_Children/JobList.js" />
         <option value="$PROJECT_DIR$/src/components/FindWork_Children/JobMap.js" />
         <option value="$PROJECT_DIR$/src/utils/GoogleApi.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
@@ -211,14 +211,15 @@
         <option value="$PROJECT_DIR$/src/styles/grids.css" />
         <option value="$PROJECT_DIR$/src/components/NavMenu.js" />
         <option value="$PROJECT_DIR$/src/styles/NavStyler.js" />
+        <option value="$PROJECT_DIR$/src/components/FindWork_Children/JobList.js" />
         <option value="$PROJECT_DIR$/src/components/NavMenu_Child/Hamburger.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-23" />
-    <option name="y" value="37" />
-    <option name="width" value="2163" />
+    <option name="x" value="-58" />
+    <option name="y" value="86" />
+    <option name="width" value="1677" />
     <option name="height" value="1295" />
   </component>
   <component name="ProjectView">
@@ -335,12 +336,12 @@
       <updated>1545365043474</updated>
       <workItem from="1545365045807" duration="109894000" />
       <workItem from="1546540480997" duration="37823000" />
-      <workItem from="1547005254091" duration="30775000" />
+      <workItem from="1547005254091" duration="32426000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178492000" />
+    <option name="totallyTimeSpent" value="180143000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -352,15 +353,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-18" y="30" width="1730" height="1036" extended-state="0" />
+    <frame x="-46" y="69" width="1341" height="1036" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.113998815" />
+      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.14800614" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="TypeScript" />
-      <window_info anchor="bottom" id="Terminal" order="0" sideWeight="0.49951598" visible="true" weight="0.18362832" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" sideWeight="0.49951598" visible="true" weight="0.18362832" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50048405" side_tool="true" weight="0.23931624" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.32897383" />
       <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
@@ -659,13 +660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/FindWork_Children/JobList.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-google-autocomplete/lib/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="251">
@@ -764,8 +758,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/NavMenu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        <state relative-caret-position="219">
+          <caret line="59" column="31" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/FindWork_Children/JobList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="109" column="23" selection-start-line="109" selection-start-column="23" selection-end-line="109" selection-end-column="23" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -774,8 +778,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/NavMenu_Child/Hamburger.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="96" column="11" selection-start-line="96" selection-start-column="11" selection-end-line="96" selection-end-column="11" />
+        <state relative-caret-position="370">
+          <caret line="136" column="79" selection-start-line="136" selection-start-column="79" selection-end-line="136" selection-end-column="79" />
         </state>
       </provider>
     </entry>

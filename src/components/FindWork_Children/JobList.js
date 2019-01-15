@@ -75,6 +75,11 @@ class JobList extends React.Component{
 
 				//if the u_id of the logged in user is the same as the user
 
+				const JobListItemDiv = styled.div`
+					'border-bottom': '2px dotted black',
+    				margin: '0 7% 0 11%'
+						`
+
 				const deleteJobButton = () => {
 					try{
 						if(this.props.UserData[1].uid === job.job_poster_id){
