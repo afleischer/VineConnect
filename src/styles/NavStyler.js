@@ -22,6 +22,7 @@ export const NavStyler = styled.div`
 
     display: flex;
     height: 6vh;
+    width: 100vw;
 `;
 
 export const NavOption = styled.div`

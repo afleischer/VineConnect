@@ -94,8 +94,9 @@ class Hamburger extends React.Component{
         transition: .2s ease-out;
         z-index: 5;
         opacity: 0.8;
-        right: ${state => state.Opened ? "-300px" : "0"};
+           right: -17px;
         animation: ${state => state.Opened} 1s linear;
+        display: ${state => state.Opened ? "inherit" : "none"};
 
         `     
         //        display: ${state => state.Opened ? "block" : "none"};

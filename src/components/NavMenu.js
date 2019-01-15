@@ -40,6 +40,8 @@ class NavMenu extends React.Component{
 
 	render(){
 
+		const MainColor = "rgba(45,45,45,0.98)";
+
 		var selectedColor = function(){
 			var theStyle = this.state.link_selected;
 			switch (theStyle){
@@ -60,20 +62,20 @@ class NavMenu extends React.Component{
 		color: #e2e2e2;
 		margin: 0;
 		transform: translateY(-46%);
-		background-color: ${props => (props.LinkSelected == "home") ? "#585757" : (props.LinkSelected != "home") ? "rgba(45,45,45,0.98)" : "red"}
+		background-color: ${props => (props.LinkSelected == "home") ? "#585757" : (props.LinkSelected != "home") ? MainColor : "red"}
 	`;
 
 
 		const NavOptionTextFindWork = styled.div`
 		font-family: Arial;
 		color: white;
-		background-color: ${props => (props.LinkSelected == "find_work") ? "#585757" : (props.LinkSelected != "find_work") ? "rgba(45,45,45,0.98)" : "red"}
+		background-color: ${props => (props.LinkSelected == "find_work") ? "#585757" : (props.LinkSelected != "find_work") ? MainColor : "red"}
 	`;
 	
 		const NavOptionTextPostWork = styled.div`
 		font-family: Arial;
 		color: white;
-		background-color: ${props => (props.LinkSelected == "post_work") ? "#585757" : (props.LinkSelected != "post_work") ? "rgba(45,45,45,0.98)" : "red"}
+		background-color: ${props => (props.LinkSelected == "post_work") ? "#585757" : (props.LinkSelected != "post_work") ? MainColor : "red"}
 	`;
 
 		const NavLinkStyle = {
