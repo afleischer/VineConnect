@@ -106,10 +106,11 @@ class App extends React.Component {
 
   }
 
-    deleteJob(uuid){
+    deleteJob(e){
         //in Firebase, set "active" on job to N
-
-        let toChangeUID = this.state.user_docs[1].uid
+        let event = e.target;
+        console.log(event);
+        let toChangeUID = this.state.user_docs[1].uid;
 
         //Set the business id of what is passed on to false
             //???What will the id passed be? What will it look like?
@@ -126,8 +127,6 @@ class App extends React.Component {
 
 
   render() {
-
-
 
     var user = firebase.auth().currentUser;
     

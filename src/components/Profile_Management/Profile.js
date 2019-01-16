@@ -3,6 +3,8 @@ import React from 'react'
 import '../../styles/grids.css'
 
 import firebase from 'firebase';
+import {db} from '../../firebase_config'
+
 
 class Profile extends React.Component{
     constructor(props){
@@ -51,11 +53,14 @@ class UserProfile extends React.Component {
         //send photo to firebase
         let userID = this.props.UserData[1].uid;
         var fileToUpload = e.target.files[0];
-
+        var fileName= fileToUpload.name;
         //Send to firebase
-        var storageRef = firebase.storage().ref().child("profileImages/"+userID+"/"+e.target.files[0].name);
+        var storageRef = firebase.storage().ref().child("profileImages/"+userID+"/"+fileName);
+        var userId= this.props.UserData[1].uid;
+        db.collection("users").doc(userId).set({
+            user_photo: fileName
+        })
 
-        console.log("file object keys are:"+fileToUpload);
         storageRef.put(fileToUpload).then(() => {
             this.setState({
                 uploadNotice : "success"
@@ -65,7 +70,6 @@ class UserProfile extends React.Component {
         })
     }
 
-    //TODO: Create a "profile_image_ref" value when uploading an image, save it in a user collection, then reference it
      retrieveProfileImage = (userdata) => {
         if(userdata){
             let userID = userdata[1].uid;
@@ -82,14 +86,6 @@ class UserProfile extends React.Component {
             //pass
         }
 
-    }
-
-    componentWillMount(){
-        this.retrieveProfileImage();
-    }
-
-    componentDidMount() {
-        this.retrieveProfileImage();
     }
 
     UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
