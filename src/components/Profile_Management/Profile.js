@@ -9,8 +9,12 @@ class Profile extends React.Component{
         super(props);
 
         this.fetchProfile = this.fetchProfile.bind(this);
+
     }
 
+    state = {
+        profile_image_src : null
+    }
 
     fetchProfile(){
 
@@ -36,10 +40,11 @@ class UserProfile extends React.Component {
         /**
          * Listener for Profile data
          */
+
     }
 
     state= {
-
+        profile_image_src : null
     }
 
     onUploadClick = (e) => {
@@ -60,29 +65,38 @@ class UserProfile extends React.Component {
         })
     }
 
-    retrieveProfileImage = (e) => {
-        if(this.props.UserData){
-            let userID = this.props.UserData[1].uid;
-
-            var profileImageRef = firebase.storage().ref().child("profileImages/"+userID+"/");
-            var profileSource = profileImageRef.getDownloadURL();
-
-            if (!profileSource){
-
-            }
-            else{
-                this.setState({
-                    profile_image_src : profileSource
-                })            
-            }
-
+    //TODO: Create a "profile_image_ref" value when uploading an image, save it in a user collection, then reference it
+     retrieveProfileImage = (userdata) => {
+        if(userdata){
+            let userID = userdata[1].uid;
+            let userProfileRef = userdata[1].user_photo;
+            var profileImageRef = firebase.storage().ref().child("profileImages/"+userID+"/"+userProfileRef).getDownloadURL()
+                .then((returnedValue)=>{
+                    let profileSource = returnedValue;
+                    this.setState({
+                        profile_image_src : profileSource
+                    })
+                })
         }
-        else {return 0;}
+        else {
+            //pass
+        }
 
     }
 
-    componentDidMount(){
+    componentWillMount(){
         this.retrieveProfileImage();
+    }
+
+    componentDidMount() {
+        this.retrieveProfileImage();
+    }
+
+    UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
+        if((!this.props.UserData) && (nextProps.UserData) ){
+            let userdata = nextProps.UserData;
+            this.retrieveProfileImage(userdata);
+        }
     }
 
     render() {
@@ -105,7 +119,7 @@ class UserProfile extends React.Component {
                         <h2>Profile Photo:</h2>
                         <h3>{returnValPre[1].user_photo}</h3>
                         <div><img src={this.state.profile_image_src ? this.state.profile_image_src : null} /></div>
-                        <input type="file" onChange={(e) => this.onUploadClick(e)} /> 
+                        <input type="file" onChange={(e) => this.onUploadClick(e)} />
                     </div>
                     <div className="profile_description">
                         <h2>Your Description:</h2>
@@ -129,7 +143,7 @@ class UserProfile extends React.Component {
             </div>)
         }catch(error){
             var returnVal = (<div>Please <a href="/login">log in</a> to view your profile</div>);
-        }
+                }
 
         return (
             returnVal
