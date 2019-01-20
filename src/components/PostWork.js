@@ -300,76 +300,14 @@ REFACTORING TO componentDidMount
         }
 
         componentDidMount() {
-            /*
-            google.autocomplete.addListener("place_changed", function(place){
-                this.setState({
-                    job_address: place
-                })
-            })
-               */
+
             Geocode.setApiKey("AIzaSyCwomCR76QqvAsziOJzvunlmlo7mveJQ0w");
             Geocode.enableDebug();
 
-            /*
-            this.autocomplete = new google.maps.places.Autocomplete(this.autocompleteInput.current,
-                {"types": ["geocode"]});
-            
-            const AutocompleteField = this.addressRef.current;
-
-            if(AutocompleteField){
-                AutocompleteField.addListener('place_changed', this.handlePlaceChanged);
-            }
-            */
 
         }
 
 
-
-
-/*
-
-    componentDidMount(){
-
-        if(this.props.Session != undefined){
-                db.collection("jobs").where("active", "==", true)
-                    .where("job_poster", "==", this.user)
-                    .get().then((querySnapshot) => {
-                    var jobsArr = [];
-                    querySnapshot.forEach(function(doc) {
-                        // doc.data() is never undefined for query doc snapshots
-                        jobsArr.push(doc.data())
-                    });
-        
-                    this.setState({
-                        displayedJobs : jobsArr
-                    })
-                });
-
-        }
-
-    }
-    
-
-    UNSAFE_componentWillReceiveProps(nextProps){
-      //if the session data chances...
-      if(nextProps.UserData!==this.props.UserData){
-        const user = nextProps.UserData[1].uid;
-        db.collection("jobs").where("active", "==", true)
-            .where("job_poster", "==", user)
-            .get().then((querySnapshot) => {
-            var jobsArr = [];
-            querySnapshot.forEach(function(doc) {
-                // doc.data() is never undefined for query doc snapshots
-                jobsArr.push(doc.data())
-            });
-
-            this.setState({
-                displayedJobs : jobsArr
-            })
-        });
-      }
-    }
-    */
 
 
     render(){
@@ -490,7 +428,7 @@ REFACTORING TO componentDidMount
 
             if(Jobs){
                 JobCheck = (<JobList Jobs={Jobs}
-                                     DeleteJob={this.props.DeleteJob(Jobs.job_uuid)}
+                                     DeleteJob={this.props.DeleteJob}
                                      UserData={this.props.UserData}
                                      style={JobListStyle}
                             />)
