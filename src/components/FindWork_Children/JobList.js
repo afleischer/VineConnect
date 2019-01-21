@@ -83,7 +83,10 @@ class JobList extends React.Component{
 				const deleteJobButton = () => {
 					try{
 						if(this.props.UserData[1].uid === job.job_poster_id){
-							return (<button onClick={this.props.DeleteJob}>Delete Job</button>)
+							return (<button onClick={this.props.DeleteJob}
+								ThisJob={job.job_uuid}
+								>Delete Job
+								</button>)
 						}
 					}catch(err){
 						return null;
