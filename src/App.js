@@ -14,6 +14,7 @@ import ManageWork from './components/ManageWork'
 import Footer from './components/Footer'
 import Routes from './Routes'
 import Hamburger from './components/NavMenu_Child/Hamburger'
+import ContactUpdate from './ContactModal'
 
 import firebase, {db} from './firebase_config'
 
@@ -144,6 +145,7 @@ class App extends React.Component {
         JobsList={this.state.displayedJobs}
 
         />
+          <ContactUpdate />
         <Footer />
 
       </div>
