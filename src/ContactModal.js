@@ -70,3 +70,5 @@ const modalBackground = {
 const modalEntryBar = {
 	'background-color': '#9b9896'
 }
+
+export default ContactModal
