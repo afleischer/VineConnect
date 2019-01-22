@@ -109,10 +109,17 @@ class App extends React.Component {
 
     deleteJob(e){
         //in Firebase, set "active" on job to N
-        let event = e.target;
-        console.log(event);
-        let toChangeUID = this.state.user_docs[1].uid;
+        /**
+        * The id of the job to delete will be bound to the element that calls it here
+        **/
 
+        let toInactivate = e.currentTarget.attributes[0].value;
+        console.log(toInactivate);
+        db.collection('jobs').doc().where("job_uuid", "==", toInactivate).update({
+          "active": false
+        })
+
+        console.log("notice sent");
         //Set the business id of what is passed on to false
             //???What will the id passed be? What will it look like?
 
