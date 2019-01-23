@@ -431,6 +431,7 @@ REFACTORING TO componentDidMount
                                      DeleteJob={this.props.DeleteJob}
                                      UserData={this.props.UserData}
                                      style={JobListStyle}
+                                     DisplayContactInfo={this.props.DisplayContactInfo}
                             />)
             }
             else{

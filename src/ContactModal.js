@@ -26,9 +26,9 @@ class ContactModal extends React.Component{
 
 
 		const ContactModalStyled = styled.div`
-			display: ${props => props.opened ? "block" : "none"}, /* Hidden by default */
-			position: fixed; /* Stay in place */
-			z-index: 1; /* Sit on top */
+			display: ${state => state.opened ? "block" : "none"}, /* Hidden by default */
+			position: absolute; /* Stay in place */
+			z-index: 5; /* Sit on top */
 			left: 0;
 			top: 0;
 			width: 100%; /* Full width */
@@ -37,14 +37,10 @@ class ContactModal extends React.Component{
 			background-color: rgba(0,0,0,0.4); /* Black w/ opacity */		
 		`
 
-
-
-
-
 		return(
 			<div style={modalBackground} className="modal-container">
 				<ContactModalStyled opened={this.state.opened}>
-				<h2>Please contact:{this.props.contactInfo} to get started!</h2>
+				<h2>Please contact: {this.props.SelectedJobUser} to get started!</h2>
 				</ContactModalStyled>
 				<div modalEntryBar>
 					<div onClick={this.closeModal}>This will be the button.</div>
