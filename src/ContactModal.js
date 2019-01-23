@@ -40,7 +40,7 @@ class ContactModal extends React.Component{
 		return(
 			<div style={modalBackground} className="modal-container">
 				<ContactModalStyled opened={this.state.opened}>
-				<h2>Please contact: {this.props.SelectedJobUser} to get started!</h2>
+				<h2>Please contact: {this.props.UserContactInfo} to get started!</h2>
 				</ContactModalStyled>
 				<div modalEntryBar>
 					<div onClick={this.closeModal}>This will be the button.</div>

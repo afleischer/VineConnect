@@ -144,15 +144,27 @@ class App extends React.Component {
     let contactDisplayedID = e.target.parentElement.getAttribute("jobUUID");
     let contactDisplayedUser = e.target.parentElement.getAttribute("userValue");
 
-    var query = db.collection('users').doc().where("uid", "==", contactDisplayedUser).then({
-      
+    db.collection('users').where("uid", "==", contactDisplayedUser).get().then((doc)=> {
+        var contactInfo;
+
+        doc.forEach( (innerDoc) => {
+            if (innerDoc.uid == contactDisplayedID){
+                contactInfo = innerDoc.user_contact_info;
+            }
+        })
+        this.setState({
+            userContactInfo : contactInfo,
+            SelectedJobUUID : contactDisplayedID,
+            SelectedJobPoster : contactDisplayedUser
+        });
     })
 
+/*
     this.setState({
       SelectedJobUUID : contactDisplayedID,
       SelectedJobPoster : contactDisplayedUser
      })  
-
+*/
     }
 
 
@@ -176,6 +188,7 @@ class App extends React.Component {
         />
           <ContactModal SelectedJobUser={this.state.SelectedJobUUID}
             SelectedJobPoster={this.state.SelectedJobPoster}
+            UserContactInfo={this.state.userContactInfo}
           />
         <Footer />
 
