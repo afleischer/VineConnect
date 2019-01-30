@@ -14,6 +14,7 @@ import ManageWork from './components/ManageWork'
 import Footer from './components/Footer'
 import Routes from './Routes'
 import Hamburger from './components/NavMenu_Child/Hamburger'
+import ContactModal from './ContactModal'
 
 import firebase, {db} from './firebase_config'
 
@@ -30,6 +31,8 @@ class App extends React.Component {
 
     this.LogOut = this.LogOut.bind(this);
     this.deleteJob = this.deleteJob.bind(this);
+
+    this.displayContactInfo = this.displayContactInfo.bind(this);
   }
 
   state ={
@@ -48,6 +51,7 @@ class App extends React.Component {
       });
 
   }
+
 
     /**
      * Detect user Auth state change at app level
@@ -106,11 +110,19 @@ class App extends React.Component {
 
   }
 
-    deleteJob(uuid){
+    deleteJob(e){
         //in Firebase, set "active" on job to N
+        /**
+        * The id of the job to delete will be bound to the element that calls it here
+        **/
 
-        let toChangeUID = this.state.user_docs[1].uid
+        let toInactivate = e.currentTarget.attributes[0].value;
+        console.log(toInactivate);
+        db.collection('jobs').doc().where("job_uuid", "==", toInactivate).update({
+          "active": false
+        })
 
+        console.log("notice sent");
         //Set the business id of what is passed on to false
             //???What will the id passed be? What will it look like?
 
@@ -124,10 +136,39 @@ class App extends React.Component {
 
     }
 
+    displayContactInfo(e){
+        //TODO: When a user clicks on a job in the job list
+          //we receive the "selectedJob"
+          //curr TODO: 
+          debugger;
+    let contactDisplayedID = e.target.parentElement.getAttribute("jobUUID");
+    let contactDisplayedUser = e.target.parentElement.getAttribute("userValue");
+
+    db.collection('users').where("uid", "==", contactDisplayedUser).get().then((doc)=> {
+        var contactInfo;
+
+        doc.forEach( (innerDoc) => {
+            if (innerDoc.uid == contactDisplayedID){
+                contactInfo = innerDoc.user_contact_info;
+            }
+        })
+        this.setState({
+            userContactInfo : contactInfo,
+            SelectedJobUUID : contactDisplayedID,
+            SelectedJobPoster : contactDisplayedUser
+        });
+    })
+
+/*
+    this.setState({
+      SelectedJobUUID : contactDisplayedID,
+      SelectedJobPoster : contactDisplayedUser
+     })  
+*/
+    }
+
 
   render() {
-
-
 
     var user = firebase.auth().currentUser;
     
@@ -143,8 +184,12 @@ class App extends React.Component {
                 LogOutFn={this.LogOut}
                 DeleteJob={this.deleteJob}
         JobsList={this.state.displayedJobs}
-
+        DisplayContactInfo={this.displayContactInfo}
         />
+          <ContactModal SelectedJobUser={this.state.SelectedJobUUID}
+            SelectedJobPoster={this.state.SelectedJobPoster}
+            UserContactInfo={this.state.userContactInfo}
+          />
         <Footer />
 
       </div>

@@ -48,6 +48,8 @@ class JobList extends React.Component{
 		 */
 		var jobs = this.props.Jobs;
 
+		const DisplayContactInfo = this.props.DisplayContactInfo;
+
 		var returnArray = []
 		//populate a list of jobs
 		if (this.props.Jobs !== null && this.props.Jobs !== undefined){
@@ -83,7 +85,10 @@ class JobList extends React.Component{
 				const deleteJobButton = () => {
 					try{
 						if(this.props.UserData[1].uid === job.job_poster_id){
-							return (<button onClick={this.props.DeleteJob}>Delete Job</button>)
+							return (<button onClick={this.props.DeleteJob}
+								ThisJob={job.job_uuid}
+								>Delete Job
+								</button>)
 						}
 					}catch(err){
 						return null;
@@ -99,13 +104,13 @@ class JobList extends React.Component{
 
 				}catch{}
 				*/
-				returnArray.push(<div style={ItemStyle} className="JobListItem">
+				returnArray.push(<div style={ItemStyle} className="JobListItem" jobUUID={job.job_uuid} userValue={job.job_poster_id}>
 					<h1>Job: {job.job_name}</h1>
 					<h3>Posted by: {job.job_poster} </h3>
 					<h3>Start date: {formattedTime}</h3>
 					
 					<p>{job.description}</p>
-					<button>I'm interested!</button>
+					<button onClick={(e) => DisplayContactInfo(e)}>I'm interested!</button>
 					{deleteJobButton()}
 				</div>)
 			}
